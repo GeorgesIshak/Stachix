@@ -1,4 +1,3 @@
-// page.tsx
 import ServicesListBlend from "@/components/ServicesListBlend";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,7 +7,6 @@ export default function Home() {
   return (
     <main className="min-h-dvh">
       <section className="relative w-full">
-        {/* HERO – transparent (sits on global animated backdrop) */}
         <div className="relative h-[60vh] min-h-[800px]">
           <div className="container-default h-full flex items-center pt-24 sm:pt-28">
             <div className="grid w-full grid-cols-1 lg:grid-cols-12 items-center">
