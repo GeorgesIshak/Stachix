@@ -1,26 +1,290 @@
 @import "tailwindcss";
 
+/* ---------- CSS Vars (Light defaults) ---------- */
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Brand system (refined purple → magenta on deep navy) */
+  --primary:  #A855F7;   /* vivid purple */
+  --accent:   #EC4899;   /* magenta */
+  --bg:       #0F0F1F;   /* deep navy black (dark mode canvas) */
+  --surface:  #15172A;   /* cards / panels */
+  --border:   #2E2E3F;
+
+  --text-default: #171717;
+  --text-muted:   #4B5563;
+  --text-dim:     #6B7280;
 }
 
+/* ---------- Dark Mode ---------- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: var(--bg);
+    --foreground: #EDEDED;
+
+    --text-default: #FFFFFF;
+    --text-muted:   #D1D5DB;
+    --text-dim:     #9CA3AF;
+  }
+}
+
+/* ---------- Tailwind theme bridge ---------- */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-accent: var(--accent);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+
+  --color-text-default: var(--text-default);
+  --color-text-muted: var(--text-muted);
+  --color-text-dim: var(--text-dim);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* ---------- Base ---------- */
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+/* ---------- Animations ---------- */
+@keyframes bg-breathe {
+  0%   { background-position: 0% 0%;   }
+  50%  { background-position: 100% 100%; }
+  100% { background-position: 0% 0%;   }
+}
+@keyframes grain { 
+  0%,100% { transform: translate(0,0) }
+  10% { transform: translate(-1%, -1%) }
+  20% { transform: translate(1%, -0.5%) }
+  30% { transform: translate(0.5%, 1%) }
+  40% { transform: translate(-1%, 0.5%) }
+  50% { transform: translate(1%, -1%) }
+  60% { transform: translate(0.5%, 0.5%) }
+  70% { transform: translate(-0.5%, 1%) }
+  80% { transform: translate(1%, 0.5%) }
+  90% { transform: translate(-0.5%, -0.5%) }
+}
+@keyframes sweep {
+  0%   { transform: translateX(-120%) rotate(10deg); opacity: 0; }
+  15%  { opacity: .25; }
+  50%  { transform: translateX(120%) rotate(10deg); opacity: 0; }
+  100% { transform: translateX(120%) rotate(10deg); opacity: 0; }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-breathe, .grain-overlay, .shine { animation: none !important; }
+}
+
+/* ---------- Utilities ---------- */
+
+/* Breathing hero background (tri-color gradient + subtle base) */
+/* ---------- Utilities ---------- */
+
+/* Breathing hero background (tri-color gradient + subtle base) */
+.hero-breathing {
+  background-image:
+    linear-gradient(95deg, #ff477b 0%, #5c5ce0 49%, #1a237e 100%),
+    radial-gradient(1600px 900px at 80% 20%, rgba(0,0,0,.25), transparent 60%),
+    linear-gradient(135deg, #0F0F1F 0%, #12152a 50%, #16143a 100%);
+  background-size: 180% 180%, 120% 120%, 120% 120%;
+  background-position: 0% 0%, 0% 0%, 0% 0%;
+}
+
+.animate-breathe {
+  animation: bg-breathe 22s ease-in-out infinite;
+}
+
+/* Soft vignette */
+.vignette-soft {
+  background: rgb(0 0 0 / 0.20);
+  -webkit-mask-image: radial-gradient(1200px 600px at 25% 55%, black, transparent);
+  mask-image: radial-gradient(1200px 600px at 25% 55%, black, transparent);
+}
+
+/* Subtle animated grain */
+.grain-overlay {
+  opacity: 0.06;
+  mix-blend-mode: soft-light;
+  will-change: transform;
+  animation: grain 7s steps(6) infinite;
+  background-image:
+    url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'>\
+<filter id='n'>\
+<feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/>\
+<feColorMatrix type='saturate' values='0'/>\
+</filter>\
+<rect width='100%' height='100%' filter='url(#n)' opacity='0.65'/>\
+</svg>");
+  background-size: 160px 160px;
+}
+
+/* Color orbs (depth) */
+.orb {
+  position: absolute;
+  filter: blur(70px);
+  opacity: .18;
+  mix-blend-mode: screen;
+}
+.orb--pink {
+  width: 40rem; height: 40rem;
+  left: -12rem; top: 18rem;
+  background: #ff477b;
+  border-radius: 50%;
+}
+.orb--blue {
+  width: 36rem; height: 36rem;
+  right: -10rem; top: 8rem;
+  background: #318fff;
+  border-radius: 50%;
+}
+
+/* Optional light sweep */
+.shine {
+  position: absolute; inset: 0;
+  background: linear-gradient(98deg, transparent 45%, rgba(255,255,255,.18) 50%, transparent 55%);
+  transform: translateX(-120%) rotate(10deg);
+  animation: sweep 12s ease-in-out infinite;
+}
+
+
+/* Buttons (unchanged, tuned to palette) */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.75rem 1.5rem; border-radius: 9999px;
+  color: white; font-weight: 600; font-size: 0.875rem;
+  background-image: linear-gradient(to right, #6366f1, #d946ef); /* indigo → fuchsia */
+  box-shadow: 0 10px 24px -10px rgba(99,102,241,.35);
+  transition: opacity 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+}
+.btn-primary:hover { 
+  opacity: .94; 
+  transform: translateY(-1px); 
+  box-shadow: 0 12px 28px -10px rgba(217,70,239,.45); 
+}
+.btn-primary:focus-visible { 
+  outline: 0; 
+  box-shadow: 0 0 0 2px rgba(217,70,239,.55); 
+}
+
+.btn-secondary {
+  display: inline-flex; align-items: center;
+  padding: 0.75rem 1.5rem; border-radius: 9999px;
+  color: color-mix(in oklab, white 90%, transparent);
+  font-weight: 600; font-size: 0.875rem;
+  background: color-mix(in oklab, white 5%, transparent);
+  border: 1px solid color-mix(in oklab, white 30%, transparent);
+  transition: background-color 200ms ease, border-color 200ms ease, transform 200ms ease;
+}
+.btn-secondary:hover { background: color-mix(in oklab, white 10%, transparent); border-color: color-mix(in oklab, white 50%, transparent); }
+.btn-secondary:focus-visible { outline: 0; box-shadow: 0 0 0 2px color-mix(in oklab, var(--primary) 60%, transparent); }
+
+/* Chip & card remain the same as you had (optional) */
+
+/* Chips (optional) */
+.chip {
+  display: inline-flex; align-items: center; gap: 0.375rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px; font-size: 0.75rem; font-weight: 500;
+  color: var(--text-muted);
+  background: color-mix(in oklab, white 10%, transparent);
+  border: 1px solid color-mix(in oklab, white 10%, transparent);
+}
+
+/* Card (optional) */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px -15px rgba(0,0,0,0.55);
+}
+
+/* Floating & glowing effect for shape */
+.hero-shape {
+  animation: float 12s ease-in-out infinite;
+  filter: drop-shadow(0 0 25px rgba(99,102,241,0.4))
+          drop-shadow(0 0 45px rgba(236,72,153,0.3));
+  transition: transform 0.4s ease;
+}
+
+@keyframes float {
+  0%   { transform: translateY(0) scale(1); }
+  50%  { transform: translateY(-20px) scale(1.02); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+
+/* show system cursor on touch, hide on desktop only */
+@media (hover: hover) and (pointer: fine) {
+  body { cursor: none; }
+}
+
+.cursor-dot {
+  position: fixed;
+  left: 0; top: 0;
+  width: 16px; height: 16px;              /* smaller = snappier feel */
+  border-radius: 9999px;
+  pointer-events: none;
+  z-index: 9999;
+  /* gradient fill without heavy shadows */
+  background: radial-gradient(circle at 35% 35%,
+    rgba(99,102,241,0.95) 0%,
+    rgba(168,85,247,0.85) 45%,
+    rgba(217,70,239,0.75) 100%
+  );
+  mix-blend-mode: screen;
+  opacity: 0.9;
+  /* no transition on transform (we animate via rAF) */
+  will-change: transform;
+  transform: translate3d(-100px,-100px,0); /* off-screen before first move */
+}
+
+/* Optional: subtle scale on interactive targets, cheap */
+@media (hover: hover) and (pointer: fine) {
+  a:hover, button:hover, [role="button"]:hover {
+    /* add a data attr if you want more control */
+  }
+  a:hover ~ .cursor-dot,
+  button:hover ~ .cursor-dot {}
+}
+
+
+
+
+/* perspective holder + card */
+.tilt3d-root { /* perspective set via JS */ }
+.tilt3d-card {
+  backface-visibility: hidden;
+  transform: rotateX(0deg) rotateY(0deg);
+}
+
+/* optional: brand glow on the 3D element wrapper */
+.shape-glow {
+  filter:
+    drop-shadow(0 0 26px rgba(99,102,241,0.45))
+    drop-shadow(0 0 46px rgba(236,72,153,0.35));
+}
+
+/* optional: soft vertical float (CSS only, cheap) */
+@keyframes floatSoft {
+  0%,100% { translate: 0 0; }
+  50%     { translate: 0 -16px; }
+}
+.shape-float { animation: floatSoft 12s ease-in-out infinite; }
+
+/* accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .shape-float { animation: none !important; }
+}
+
+/* globals.css */
+.container-default {
+  @apply mx-auto px-6 sm:px-8 lg:px-10;
 }
