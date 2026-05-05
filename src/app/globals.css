@@ -221,41 +221,6 @@ body {
 }
 
 
-/* show system cursor on touch, hide on desktop only */
-@media (hover: hover) and (pointer: fine) {
-  body { cursor: none; }
-}
-
-.cursor-dot {
-  position: fixed;
-  left: 0; top: 0;
-  width: 16px; height: 16px;              /* smaller = snappier feel */
-  border-radius: 9999px;
-  pointer-events: none;
-  z-index: 9999;
-  /* gradient fill without heavy shadows */
-  background: radial-gradient(circle at 35% 35%,
-    rgba(99,102,241,0.95) 0%,
-    rgba(168,85,247,0.85) 45%,
-    rgba(217,70,239,0.75) 100%
-  );
-  mix-blend-mode: screen;
-  opacity: 0.9;
-  /* no transition on transform (we animate via rAF) */
-  will-change: transform;
-  transform: translate3d(-100px,-100px,0); /* off-screen before first move */
-}
-
-/* Optional: subtle scale on interactive targets, cheap */
-@media (hover: hover) and (pointer: fine) {
-  a:hover, button:hover, [role="button"]:hover {
-    /* add a data attr if you want more control */
-  }
-  a:hover ~ .cursor-dot,
-  button:hover ~ .cursor-dot {}
-}
-
-
 
 
 /* perspective holder + card */
@@ -294,3 +259,5 @@ body {
 .container-default {
   @apply mx-auto px-6 sm:px-8 lg:px-10;
 }
+
+

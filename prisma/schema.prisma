@@ -1,0 +1,110 @@
+datasource db {
+  provider = "postgresql"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+
+enum VocabType {
+  VERB
+  NOUN
+  ADJ
+  PHRASE
+}
+
+enum Article {
+  DER
+  DIE
+  DAS
+}
+
+enum Level {
+  A1
+  A2
+  B1
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String?  @unique
+  name      String?
+  createdAt DateTime @default(now())
+
+  progresses Progress[]
+  dailyLogs  DailyLog[]
+}
+
+model VocabItem {
+  id        String   @id @default(cuid())
+  type      VocabType
+  german    String
+  english   String
+  level     Level    @default(A1)
+
+  // NOUN
+  article   Article?
+  plural    String?
+
+  // VERB
+  past      String?
+  perfekt   String?
+  aux       String? // "haben" or "sein"
+
+  exampleDe String?
+  exampleEn String?
+
+  tags      String[] // ["supermarket","work"]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  progresses Progress[]
+  dailyItems DailyItem[]
+
+  @@index([type, level])
+}
+
+model Progress {
+  id            String   @id @default(cuid())
+  userId        String
+  vocabId       String
+
+  interval      Int      @default(1)
+  ease          Float    @default(2.5)
+  dueAt         DateTime @default(now())
+  lastSeenAt    DateTime?
+  correctStreak Int      @default(0)
+
+  user  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  vocab VocabItem @relation(fields: [vocabId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, vocabId])
+  @@index([userId, dueAt])
+}
+
+model DailyLog {
+  id        String   @id @default(cuid())
+  userId    String
+  date      DateTime // store normalized day
+  mission   String?
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  items     DailyItem[]
+
+  @@unique([userId, date])
+}
+
+model DailyItem {
+  id          String   @id @default(cuid())
+  dailyLogId  String
+  vocabId     String
+  shownAt     DateTime @default(now())
+  isCorrect   Boolean?
+
+  dailyLog DailyLog  @relation(fields: [dailyLogId], references: [id], onDelete: Cascade)
+  vocab    VocabItem @relation(fields: [vocabId], references: [id], onDelete: Cascade)
+
+  @@index([dailyLogId])
+}
