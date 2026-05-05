@@ -155,7 +155,7 @@ export default function AboutSection() {
               </h4>
 
               <a
-                href="/cv.pdf"
+                href="/images/georges-ishak-resume.pdf"
                 className="mt-6 inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/[0.06] px-5 py-3 text-sm font-semibold text-white transition-all hover:bg-pink-500/15"
               >
                 Download CV <ArrowUpRight className="h-4 w-4" />
