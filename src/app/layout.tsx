@@ -6,7 +6,7 @@ import AnimatedBackdrop from "@/components/AnimatedBackdrop";
 
 export const metadata: Metadata = {
   title: "Stachix",
-  description: "Portfolio & agency site.",
+  description: "Portfolio.",
 };
 
 export default function RootLayout({
