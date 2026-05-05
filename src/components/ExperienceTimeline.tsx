@@ -24,13 +24,13 @@ const EXPERIENCES = [
     date: "2023 - 2025",
     role: "WordPress Developer",
     company: "Klev",
-    desc: "Shipped 80+ custom WordPress & WooCommerce solutions. Engineered bespoke PHP plugins and performance-optimized themes, managing full project lifecycles from concept to production.",
+    desc: "Shipped 80+ custom WordPress & WooCommerce solutions.",
   },
   {
     date: "2018 - 2023",
     role: "B.Eng. in Software Engineering",
     company: "Antonine University",
-    desc: "5-year Engineer’s Degree specializing in Software Architecture and Networks. Developed core expertise in systems design, networking protocols, and modern web technologies.",
+    desc: "Specialized in Software Architecture and Networks.",
   },
 ];
 
@@ -39,7 +39,8 @@ export function ExperienceTimeline() {
 
   useGSAP(
     () => {
-      // Timeline progress line animation
+      if (!containerRef.current) return;
+
       gsap.from(".timeline-line-progress", {
         scaleY: 0,
         transformOrigin: "top",
@@ -52,8 +53,8 @@ export function ExperienceTimeline() {
         },
       });
 
-      // Cards animation (TYPE SAFE)
-      const cards = gsap.utils.toArray<HTMLElement>(".experience-card");
+      // 🔥 THE REAL FIX
+      const cards = gsap.utils.toArray(".experience-card") as HTMLElement[];
 
       cards.forEach((card, i) => {
         const isEven = i % 2 === 0;
@@ -79,7 +80,6 @@ export function ExperienceTimeline() {
       ref={containerRef}
       className="relative max-w-6xl mx-auto py-32 px-6 overflow-hidden"
     >
-      {/* center line */}
       <div className="absolute left-8 md:left-1/2 top-0 w-[1px] h-full bg-white/5 -translate-x-1/2" />
       <div className="timeline-line-progress absolute left-8 md:left-1/2 top-0 w-[2px] h-full bg-gradient-to-b from-fuchsia-500 via-cyan-400 to-transparent -translate-x-1/2 origin-top z-0" />
 
@@ -90,12 +90,10 @@ export function ExperienceTimeline() {
             i % 2 === 0 ? "md:flex-row-reverse" : ""
           }`}
         >
-          {/* dot */}
           <div className="absolute left-8 md:left-1/2 top-10 -translate-x-1/2 z-10">
             <div className="w-4 h-4 rounded-full bg-white border-[3px] border-fuchsia-500" />
           </div>
 
-          {/* card */}
           <div
             className={`w-full md:w-1/2 pl-16 md:pl-0 ${
               i % 2 === 0 ? "md:pr-16" : "md:pl-16"
