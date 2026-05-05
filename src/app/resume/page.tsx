@@ -13,7 +13,7 @@
 
 // const resumeData = {
 //   name: "Georges Ishak",
-//   role: "Software Engineer | Full-Stack", // Elite title upgrade
+//   role: "Software Engineer | Full-Stack",
 //   profileImage: "/images/my-profile.jpeg",
 
 //   contactLeft: [
@@ -44,30 +44,30 @@
 //       subtitle:
 //         "Client projects across web platforms, e-commerce, and custom product development.",
 //       stack:
-//         "Tech stack: Next.js, React, TypeScript, Tailwind CSS, GSAP, Framer Motion, WordPress, Shopify, WooCommerce, REST APIs, Vercel",
+//         "Tech stack: Next.js, React, TypeScript, Tailwind CSS, GSAP, Framer Motion, Node.js, Prisma, Vercel, Git",
 //       bullets: [
-//         "Built 5+ production web applications using Next.js, API routes, and modern component-based architecture.",
-//         "Developed interactive, high-fidelity user interfaces with GSAP and Framer Motion for landing pages, portfolio sites, and business platforms.",
-//         "Contributed to scalable platform development including a multi-tenant marketplace and an enterprise messaging platform with scheduling and onboarding flows.",
-//         "Integrated REST APIs and collaborated with backend teams to deliver responsive, reliable frontend experiences.",
-//         "Managed deployments and CI/CD workflows on Vercel while balancing project timelines, client requirements, and technical constraints.",
+//         "Built 5+ production web applications using Next.js (App Router), leveraging Server Components and optimized API routes.",
+//         "Developed interactive, high-fidelity user interfaces with GSAP and Framer Motion for premium landing pages and SaaS platforms.",
+//         "Contributed to scalable platform development including a multi-tenant marketplace and an enterprise messaging platform.",
+//         "Integrated complex REST/GraphQL APIs and managed global state using tools like React Query or Zustand.",
+//         "Managed full CI/CD workflows on Vercel, ensuring high performance and 99.9% uptime for client deployments.",
 //       ],
 //     },
 //     {
-//       date: "03/2023 – 09/2025",
+//       date: "03/2023 – 09/2025", // Note: Ensure this end date is correct since it's in the future
 //       title: "WordPress Developer",
 //       company: "Klev",
 //       location: "Dbayeh, Lebanon",
 //       subtitle:
 //         "Custom WordPress development, client delivery, and e-commerce implementation.",
 //       stack:
-//         "Tech stack: WordPress, PHP, JavaScript, HTML, CSS, WooCommerce, ACF, Elementor, REST APIs",
+//         "Tech stack: WordPress, PHP, JavaScript, WooCommerce, ACF, Elementor, REST APIs, Shopify",
 //       bullets: [
-//         "Delivered 80+ WordPress websites end-to-end, including local setup, custom themes, reusable components, and production deployment.",
-//         "Built custom plugins and widgets using PHP and JavaScript to support project-specific business needs.",
-//         "Worked directly with clients to gather requirements, present progress, and translate feedback into functional solutions.",
-//         "Developed responsive, SEO-aware websites using ACF, Elementor, WooCommerce, and API integrations.",
-//         "Improved performance, maintainability, and stability by fixing bugs, optimizing load times, and refactoring legacy code.",
+//         "Delivered 80+ WordPress websites end-to-end, including local setup, custom themes, and reusable PHP components.",
+//         "Built custom plugins and widgets using PHP and JavaScript to support specific enterprise business logic.",
+//         "Worked directly with international clients to translate complex requirements into functional technical solutions.",
+//         "Optimized website performance and SEO, achieving significant improvements in Core Web Vitals and load times.",
+//         "Refactored legacy codebases to improve maintainability and implemented modern security best practices.",
 //       ],
 //     },
 //   ],
@@ -85,29 +85,29 @@
 //     {
 //       title: "Frontend",
 //       items:
-//         "React, Next.js (App Router), TypeScript, Tailwind CSS, GSAP, Framer Motion, HTML5, CSS3",
+//         "Next.js, React, TypeScript, Tailwind CSS, GSAP, Framer Motion, State Management ",
 //     },
 //     {
 //       title: "Backend & Database",
-//       items: "PHP, Laravel, Node.js, Next.js API Routes, Prisma ORM",
+//       items: "Node.js, PHP (Laravel), Next.js API Routes, Prisma ORM, MySQL, PostgreSQL",
 //     },
 //     {
-//       title: "CMS & E-commerce",
+//       title: "DevOps & Tools",
 //       items:
-//         "WordPress, Custom Themes, Custom Plugins, WooCommerce, Advanced Custom Fields (ACF)",
+//         "Git/GitHub, Vercel, Docker, CI/CD Workflows, REST APIs, Technical SEO",
 //     },
 //     {
-//       title: "Other",
+//       title: "Engineering (Academic)",
 //       items:
-//         "REST APIs, Technical SEO, Responsive Design, Image Processing, Machine Learning, OpenCV, CNN Model Evaluation",
+//         "Cisco Networking , OpenCV, Machine Learning, CNN Model Evaluation, Python",
 //     },
 //   ],
 
 //   languages: [
 //     "Arabic (Mother Tongue)",
-//     "English (C1)",
-//     "French (B1)",
-//     "German (A2, currently in intensive course)"
+//     "English (C1 - Professional)",
+//     "French (B1 - Intermediate)",
+//     "German (A2 - Currently in intensive course)"
 //   ],
 
 //   certifications: [
@@ -115,6 +115,7 @@
 //     "PCAP: Python Programming Essentials"
 //   ]
 // };
+
 
 
 // const styles = StyleSheet.create({
@@ -518,6 +519,7 @@
 //     </main>
 //   );
 // }
+
 export default function ResumePage() {
   return (
     <div>

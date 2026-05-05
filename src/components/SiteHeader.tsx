@@ -1,45 +1,25 @@
 "use client";
 
-import { useRef } from "react";
+import { useState } from "react";
 import Link from "next/link";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 
 export default function SiteHeader() {
-  const headerRef = useRef(null);
+  const [isOpen, setIsOpen] = useState(false);
 
-  useGSAP(() => {
-    // 1. Initial State for GSAP (Prevents jump on load)
-    gsap.set(".nav-container", { maxWidth: "1200px" });
-
-    // 2. The Morph Animation
-    gsap.to(".nav-container", {
-      maxWidth: "800px",
-      backgroundColor: "rgba(0, 0, 0, 0.7)",
-      paddingTop: "10px",
-      paddingBottom: "10px",
-      // Adding a slight border change for luxury feel
-      borderColor: "rgba(255, 255, 255, 0.2)",
-      scrollTrigger: {
-        trigger: "body",
-        start: "top top",
-        end: "500", // Longer distance = smoother transition
-        scrub: 1.2, // Scrub value > 0 adds "smoothing" (catch-up delay)
-      },
-    });
-  }, { scope: headerRef });
+  const menuLinks = [
+    { label: "Works", href: "#work" },
+    { label: "Experience", href: "#experience" },
+    { label: "About", href: "#about" },
+  ];
 
   return (
-    <header ref={headerRef} className="fixed top-6 z-[100] w-full px-6">
-      {/* 
-         REMOVED: transition-all duration-700 (It was fighting GSAP)
-      */}
-      <div className="nav-container mx-auto flex items-center justify-between rounded-full border border-white/10 bg-transparent px-6 sm:px-10 py-5 backdrop-blur-xl shadow-2xl overflow-hidden">
+    <header className="fixed top-6 z-[100] w-full px-6">
+      <div className="mx-auto flex max-w-6xl items-center justify-between rounded-full border border-white/10 px-6 sm:px-10 py-5">
         
         {/* Brand */}
         <Link
           href="/"
-          className="text-2xl font-black tracking-tighter text-white group md:text-3xl"
+          className="z-[110] text-2xl font-black tracking-tighter text-white group"
         >
           GEORGES
           <span className="text-pink-500 group-hover:text-pink-400 transition-colors">
@@ -47,13 +27,9 @@ export default function SiteHeader() {
           </span>
         </Link>
 
-        {/* Navigation */}
-        <nav className="flex items-center gap-6 md:gap-12">
-          {[
-            { label: "Works", href: "#work" },
-            { label: "Experience", href: "#experience" },
-            { label: "About", href: "#about" },
-          ].map((item) => (
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center gap-12">
+          {menuLinks.map((item) => (
             <a
               key={item.label}
               href={item.href}
@@ -65,7 +41,25 @@ export default function SiteHeader() {
           ))}
         </nav>
 
-        {/* Minimalist Contact */}
+        {/* Burger / X */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="relative z-[110] h-6 w-6 md:hidden"
+          aria-label="Toggle Menu"
+        >
+          <span
+            className={`absolute left-0 top-1/2 h-0.5 w-6 bg-white transition-all duration-300 ${
+              isOpen ? "rotate-45" : "-translate-y-2"
+            }`}
+          />
+          <span
+            className={`absolute left-0 top-1/2 h-0.5 w-6 bg-white transition-all duration-300 ${
+              isOpen ? "-rotate-45" : "translate-y-2"
+            }`}
+          />
+        </button>
+
+        {/* Desktop Connect */}
         <div className="hidden md:block">
           <a
             href="mailto:georgesishak112@gmail.com"
@@ -74,6 +68,35 @@ export default function SiteHeader() {
             Connect
           </a>
         </div>
+      </div>
+
+      {/* Mobile Overlay */}
+      <div
+        className={`fixed inset-0 z-[105] flex flex-col items-center justify-center bg-black/95 transition-transform duration-500 md:hidden ${
+          isOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <nav className="flex flex-col items-center gap-10">
+          {menuLinks.map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              onClick={() => setIsOpen(false)}
+              className="text-5xl font-black tracking-tighter text-white hover:text-pink-500 transition-colors"
+            >
+              {item.label}
+            </a>
+          ))}
+
+          <div className="h-px w-12 bg-white/20 my-4" />
+
+          <a
+            href="mailto:georgesishak112@gmail.com"
+            className="text-[12px] font-mono uppercase tracking-[0.5em] text-pink-500"
+          >
+            Get In Touch
+          </a>
+        </nav>
       </div>
     </header>
   );
