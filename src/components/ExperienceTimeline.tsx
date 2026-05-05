@@ -1,3 +1,5 @@
+"use client";
+
 import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -32,47 +34,51 @@ const EXPERIENCES = [
   },
 ];
 
-
 export function ExperienceTimeline() {
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
-    gsap.from(".timeline-line-progress", {
-      scaleY: 0,
-      transformOrigin: "top",
-      ease: "none",
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top 60%",
-        end: "bottom 80%",
-        scrub: true,
-      },
-    });
-
-    const cards = gsap.utils.toArray(".experience-card");
-
-    cards.forEach((card, i) => {
-      const isEven = i % 2 === 0;
-
-      gsap.from(card, {
-        x: isEven ? -80 : 80,
-        opacity: 0,
-        duration: 1,
-        ease: "power3.out",
-      scrollTrigger: {
-  trigger: card,
-  start: "top 90%",
-  // onEnter, onLeave, onEnterBack, onLeaveBack
-  toggleActions: "play reverse play reverse", 
-},
-
+  useGSAP(
+    () => {
+      // Timeline progress line animation
+      gsap.from(".timeline-line-progress", {
+        scaleY: 0,
+        transformOrigin: "top",
+        ease: "none",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 60%",
+          end: "bottom 80%",
+          scrub: true,
+        },
       });
-    });
-  }, { scope: containerRef });
+
+      // Cards animation (TYPE SAFE)
+      const cards = gsap.utils.toArray<HTMLElement>(".experience-card");
+
+      cards.forEach((card, i) => {
+        const isEven = i % 2 === 0;
+
+        gsap.from(card, {
+          x: isEven ? -80 : 80,
+          opacity: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 90%",
+            toggleActions: "play reverse play reverse",
+          },
+        });
+      });
+    },
+    { scope: containerRef }
+  );
 
   return (
-    <div ref={containerRef} className="relative max-w-6xl mx-auto py-32 px-6 overflow-hidden">
-
+    <div
+      ref={containerRef}
+      className="relative max-w-6xl mx-auto py-32 px-6 overflow-hidden"
+    >
       {/* center line */}
       <div className="absolute left-8 md:left-1/2 top-0 w-[1px] h-full bg-white/5 -translate-x-1/2" />
       <div className="timeline-line-progress absolute left-8 md:left-1/2 top-0 w-[2px] h-full bg-gradient-to-b from-fuchsia-500 via-cyan-400 to-transparent -translate-x-1/2 origin-top z-0" />
@@ -90,10 +96,13 @@ export function ExperienceTimeline() {
           </div>
 
           {/* card */}
-          <div className={`w-full md:w-1/2 pl-16 md:pl-0 ${i % 2 === 0 ? "md:pr-16" : "md:pl-16"}`}>
+          <div
+            className={`w-full md:w-1/2 pl-16 md:pl-0 ${
+              i % 2 === 0 ? "md:pr-16" : "md:pl-16"
+            }`}
+          >
             <div className="experience-card group">
               <div className="p-8 rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur-xl hover:bg-white/[0.06] transition-all">
-
                 <span className="text-[10px] font-mono uppercase tracking-widest text-fuchsia-400">
                   {exp.date}
                 </span>
@@ -109,7 +118,6 @@ export function ExperienceTimeline() {
                 <p className="mt-5 text-white/60 leading-relaxed">
                   {exp.desc}
                 </p>
-
               </div>
             </div>
           </div>
@@ -118,4 +126,3 @@ export function ExperienceTimeline() {
     </div>
   );
 }
-//tony comment

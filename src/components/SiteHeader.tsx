@@ -4,7 +4,6 @@ import { useRef } from "react";
 import Link from "next/link";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function SiteHeader() {
   const headerRef = useRef(null);
