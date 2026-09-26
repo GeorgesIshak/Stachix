@@ -26,7 +26,7 @@ export default async function ResumePage({
   );
 
   return (
-    <div className="container-default flex min-h-screen flex-col gap-6 pb-16 pt-28">
+    <main className="container-default relative flex min-h-screen flex-col gap-6 pb-16 pt-32 text-white">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div className="flex gap-2">
           {tab("en", "English")}
@@ -46,6 +46,6 @@ export default async function ResumePage({
         title="CV preview"
         className="h-[85vh] w-full rounded-2xl border border-white/10 bg-white"
       />
-    </div>
+    </main>
   );
 }

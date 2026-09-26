@@ -9,7 +9,7 @@ export async function GET(request: Request) {
   const lang: ResumeLang = url.searchParams.get("lang") === "de" ? "de" : "en";
   const download = url.searchParams.has("download");
 
-  const pdf = await renderResumePdf(lang, url.origin);
+  const pdf = await renderResumePdf(lang);
   const fileName = lang === "de" ? "Georges-Ishak-Lebenslauf.pdf" : "Georges-Ishak-CV.pdf";
 
   return new Response(new Uint8Array(pdf), {

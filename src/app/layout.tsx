@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "@/app/globals.css";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
-import RevealObserver from "@/components/RevealObserver";
+import AnimatedBackdrop from "@/components/AnimatedBackdrop";
 import { SITE } from "@/data/site";
 
 const geistSans = Geist({ subsets: ["latin"], variable: "--font-geist-sans" });
@@ -31,28 +31,20 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#09090f",
+  themeColor: "#0F0F1F",
   colorScheme: "dark",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`} suppressHydrationWarning>
-      <head>
-        {/* Enables reveal animations only when JS runs, so content is never stuck hidden */}
-        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
-      </head>
-      <body className="min-h-screen overflow-x-hidden">
-        <a
-          href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-bg"
-        >
-          Skip to content
-        </a>
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className="overflow-x-hidden">
+        <AnimatedBackdrop />
         <SiteHeader />
-        <main id="main">{children}</main>
+
+        {children}
+
         <SiteFooter />
-        <RevealObserver />
       </body>
     </html>
   );

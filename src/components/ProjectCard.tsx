@@ -1,67 +1,73 @@
 import Image from "next/image";
-import { ArrowUpRight } from "lucide-react";
-import type { Project } from "@/data/projects";
+import Link from "next/link";
 
-interface ProjectCardProps {
-  project: Project;
-  featured?: boolean;
-  priority?: boolean;
+interface ProjectProps {
+  project: {
+    title: string;
+    image: string;
+    location: string;
+    tech: string[];
+    description: string;
+    link: string;
+  };
 }
 
-const domainOf = (url: string) => new URL(url).hostname.replace(/^www\./, "");
-
-export default function ProjectCard({ project, featured = false, priority = false }: ProjectCardProps) {
+export default function ProjectCard({ project }: ProjectProps) {
   return (
-    <article
-      data-reveal
-      className={`group relative overflow-hidden rounded-3xl border border-line bg-surface transition-colors duration-300 hover:border-line-strong ${
-        featured ? "md:col-span-2 md:grid md:grid-cols-[1.35fr_1fr]" : "flex flex-col"
-      }`}
-    >
-      <div className={`relative overflow-hidden bg-surface-2 ${featured ? "aspect-[3/2] md:aspect-auto md:min-h-[26rem]" : "aspect-[3/2]"}`}>
-        <Image
-          src={project.image}
-          alt={`${project.title} website shown on a laptop`}
-          fill
-          priority={priority}
-          sizes={featured ? "(max-width: 768px) 100vw, 680px" : "(max-width: 768px) 100vw, 560px"}
-          className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-        />
-      </div>
+    <article className="project-card group relative">
+      <Link 
+        href={project.link} 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className="block space-y-6 md:space-y-10"
+      >
+        {/* Image Section */}
+        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[24px] md:rounded-[32px] border border-white/10 bg-white/5 shadow-2xl">
+          <div className="project-img-inner relative h-[120%] w-full -top-[10%]">
+            <Image
+              src={project.image}
+              alt={`${project.title} website`}
+              fill
+              sizes="(max-width: 768px) 100vw, 900px"
+              className="object-cover md:grayscale md:group-hover:grayscale-0 transition-all duration-1000 scale-110 group-hover:scale-100"
+            />
+            <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-700" />
+          </div>
 
-      <div className={`flex flex-1 flex-col p-6 md:p-8 ${featured ? "md:justify-center" : ""}`}>
-        <p className="font-mono text-xs uppercase tracking-[0.14em] text-subtle">
-          {project.category} <span className="text-line-strong">/</span> {project.location}
-        </p>
+          <div className="absolute top-4 right-4 md:top-8 md:right-8 rounded-full bg-fuchsia-500 px-4 py-1.5 md:px-6 md:py-2 text-[8px] md:text-[10px] font-black uppercase tracking-[0.2em] text-black">
+            {project.location}
+          </div>
+        </div>
 
-        <h3 className={`mt-3 font-semibold tracking-tight text-ink ${featured ? "text-3xl md:text-4xl" : "text-2xl"}`}>
-          {/* Stretched link: the whole card is clickable */}
-          <a href={project.link} target="_blank" rel="noopener noreferrer" className="after:absolute after:inset-0 focus-visible:outline-none">
-            {project.title}
-          </a>
-        </h3>
-
-        <p className="mt-3 leading-relaxed text-muted">{project.description}</p>
-
-        <ul className="mt-5 flex flex-wrap gap-2" aria-label="Technologies">
-          {project.tech.map((t) => (
-            <li key={t} className="rounded-full border border-line px-3 py-1 text-xs text-muted">
-              {t}
-            </li>
-          ))}
-        </ul>
-
-        <p className="mt-auto flex items-center gap-1.5 pt-6 text-sm font-medium text-ink/80 transition-colors group-hover:text-accent-soft">
-          {domainOf(project.link)}
-          <ArrowUpRight
-            className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-            aria-hidden
-          />
-        </p>
-      </div>
-
-      {/* Keyboard focus ring for the stretched link */}
-      <span className="pointer-events-none absolute inset-0 rounded-3xl ring-accent group-has-[a:focus-visible]:ring-2" aria-hidden />
+        {/* Content Section */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 px-1 md:px-2">
+          <div className="space-y-3 md:space-y-4">
+            <div className="flex flex-wrap gap-2">
+              {project.tech.map((t) => (
+                <span key={t} className="text-[8px] md:text-[10px] font-mono text-white/40 uppercase border border-white/10 px-2 py-1 rounded whitespace-nowrap">
+                  {t}
+                </span>
+              ))}
+            </div>
+            
+            {/* UPDATED TITLE: Smaller on mobile, massive on desktop */}
+            <h3 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tighter group-hover:text-fuchsia-400 transition-colors duration-500 text-white leading-none">
+              {project.title}
+            </h3>
+            
+            <p className="max-w-md text-base md:text-xl text-white/50 leading-relaxed">
+              {project.description}
+            </p>
+          </div>
+          
+          {/* Action Button: Scaled down for mobile */}
+          <div className="flex h-14 w-14 md:h-20 md:w-20 shrink-0 items-center justify-center rounded-full border border-white/20 transition-all duration-500 group-hover:bg-white group-hover:text-black group-hover:scale-110">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-6 h-6 md:w-8 md:h-8 -rotate-45 group-hover:rotate-0 transition-transform duration-500">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </div>
+        </div>
+      </Link>
     </article>
   );
 }
