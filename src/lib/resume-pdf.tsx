@@ -47,7 +47,8 @@ const styles = StyleSheet.create({
   link: { color: "#2f2f2f", textDecoration: "none" },
 
   section: { marginTop: 14 },
-  sectionTitle: { fontSize: 11.4, fontFamily: "Helvetica-Bold", letterSpacing: 1.3, textTransform: "uppercase" },
+  // No letterSpacing here: ATS parsers read spaced capitals as separate letters ("W O R K")
+  sectionTitle: { fontSize: 11.4, fontFamily: "Helvetica-Bold", textTransform: "uppercase" },
   divider: { marginTop: 6, height: 1, backgroundColor: "#8cb5e2", width: "100%" },
 
   paragraph: { marginTop: 7, fontSize: 9.8, lineHeight: 1.48, color: "#2d2d2d" },
@@ -126,7 +127,16 @@ function ResumeDocument({ data, photoSrc }: { data: ResumeData; photoSrc: string
 
             <View style={styles.contacts}>
               {data.contacts.map(({ label, value, href }, i) => (
-                <Text key={label} style={i % 2 ? [styles.contactLine, styles.contactLineWide] : styles.contactLine}>
+                <Text
+                  key={label}
+                  style={
+                    i === data.contacts.length - 1 && i % 2 === 0
+                      ? [styles.contactLine, { width: "100%" }] // odd one out spans the full row
+                      : i % 2
+                        ? [styles.contactLine, styles.contactLineWide]
+                        : styles.contactLine
+                  }
+                >
                   <Text style={styles.bold}>{label}: </Text>
                   {href ? (
                     <Link src={href} style={styles.link}>

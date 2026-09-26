@@ -61,7 +61,7 @@ const en: ResumeData = {
     { label: "LinkedIn", value: shared.linkedin, href: `https://${shared.linkedin}` },
     { label: "Website", value: shared.website, href: `https://${shared.website}` },
     { label: "GitHub", value: shared.github, href: `https://${shared.github}` },
-    { label: "Work permit", value: "Chancenkarte" },
+    { label: "Residence status", value: "Chancenkarte (Opportunity Card), available immediately" },
   ],
 
   profile: [
@@ -148,7 +148,7 @@ const en: ResumeData = {
   ],
 
   technicalSkills: [
-    { title: "Frontend", items: "Next.js, React, TypeScript, Tailwind CSS, GSAP, Framer Motion, state management" },
+    { title: "Frontend", items: "JavaScript (ES6+), TypeScript, React, Next.js, HTML5, CSS3, Tailwind CSS, GSAP, Framer Motion, state management" },
     { title: "Backend & Database", items: "Node.js, PHP (Laravel), Next.js API Routes, Prisma ORM, MySQL, PostgreSQL" },
     { title: "DevOps & Tools", items: "Git/GitHub, Vercel, Docker, CI/CD, REST APIs, technical SEO" },
     { title: "Engineering (Academic)", items: "Cisco networking, OpenCV, machine learning, CNN model evaluation, Python" },
@@ -173,13 +173,13 @@ const de: ResumeData = {
   profileImage: shared.profileImage,
 
   contacts: [
-    { label: "Standort", value: "52224 Stolberg, Deutschland" },
+    { label: "Standort", value: "52224 Stolberg (NRW)" },
     { label: "Telefon", value: shared.phone, href: `tel:${shared.phone.replace(/\s/g, "")}` },
     { label: "E-Mail", value: shared.email, href: `mailto:${shared.email}` },
     { label: "LinkedIn", value: shared.linkedin, href: `https://${shared.linkedin}` },
     { label: "Website", value: shared.website, href: `https://${shared.website}` },
     { label: "GitHub", value: shared.github, href: `https://${shared.github}` },
-    { label: "Aufenthaltstitel", value: "Chancenkarte" },
+    { label: "Aufenthaltstitel", value: "Chancenkarte (§ 20a AufenthG), sofort verfügbar" },
   ],
 
   profile: [
@@ -266,7 +266,7 @@ const de: ResumeData = {
   ],
 
   technicalSkills: [
-    { title: "Frontend", items: "Next.js, React, TypeScript, Tailwind CSS, GSAP, Framer Motion, State Management" },
+    { title: "Frontend", items: "JavaScript (ES6+), TypeScript, React, Next.js, HTML5, CSS3, Tailwind CSS, GSAP, Framer Motion, State Management" },
     { title: "Backend & Datenbanken", items: "Node.js, PHP (Laravel), Next.js API Routes, Prisma ORM, MySQL, PostgreSQL" },
     { title: "DevOps & Tools", items: "Git/GitHub, Vercel, Docker, CI/CD, REST APIs, technisches SEO" },
     { title: "Ingenieurwesen (Studium)", items: "Cisco Networking, OpenCV, Machine Learning, CNN-Modellbewertung, Python" },
