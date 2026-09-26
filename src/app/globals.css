@@ -261,3 +261,24 @@ body {
 }
 
 
+
+/* Site is designed dark-only: never fall back to the white light-mode canvas */
+:root {
+  color-scheme: dark;
+  --background: var(--bg);
+  --foreground: #ededed;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+section[id] {
+  scroll-margin-top: 7rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

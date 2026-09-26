@@ -43,7 +43,7 @@ export default function HeroBanner() {
   }, { scope: container });
 
   return (
-    <main ref={container} className="relative h-screen w-full overflow-hidden text-white bg-transparent">
+    <section ref={container} className="relative h-screen w-full overflow-hidden text-white bg-transparent">
       
       {/* PANEL 1: IDENTITY */}
       <section className="panel panel-1 flex items-center justify-center text-center">
@@ -98,6 +98,6 @@ export default function HeroBanner() {
           </div>
         </div>
       </section>
-    </main>
+    </section>
   );
 }

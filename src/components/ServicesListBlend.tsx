@@ -18,7 +18,7 @@ type Item = {
 
 const ITEMS: Item[] = [
   {
-    img: "/images/wordpress.jpg",
+    img: "/images/services/wordpress.webp",
     title: "WordPress & WooCommerce Systems",
     tag: "WordPress",
     href: "/#work",
@@ -31,10 +31,10 @@ const ITEMS: Item[] = [
     ],
   },
   {
-    img: "/images/full-stack.jpg",
+    img: "/images/services/full-stack.webp",
     title: "Next.js Applications",
     tag: "Full-Stack",
-    href: "/work",
+    href: "/#work",
     desc: "Production-ready apps using Next.js, APIs, and modern deployment workflows.",
     features: [
       "App Router",
@@ -44,7 +44,7 @@ const ITEMS: Item[] = [
     ],
   },
   {
-    img: "/images/ui-ux.jpg",
+    img: "/images/services/ui-ux.webp",
     title: "Frontend Engineering",
     tag: "Frontend",
     href: "/#work",
@@ -57,7 +57,7 @@ const ITEMS: Item[] = [
     ],
   },
   {
-    img: "/images/shopify.jpg",
+    img: "/images/services/shopify.webp",
     title: "E-commerce Development",
     tag: "E-commerce",
     href: "/#work",
@@ -70,7 +70,7 @@ const ITEMS: Item[] = [
     ],
   },
   {
-    img: "/images/seo.jpg",
+    img: "/images/services/seo.webp",
     title: "Performance Optimization",
     tag: "Performance",
     href: "/#work",

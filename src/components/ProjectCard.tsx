@@ -5,7 +5,7 @@ interface ProjectProps {
   project: {
     title: string;
     image: string;
-    stats: string;
+    location: string;
     tech: string[];
     description: string;
     link: string;
@@ -26,15 +26,16 @@ export default function ProjectCard({ project }: ProjectProps) {
           <div className="project-img-inner relative h-[120%] w-full -top-[10%]">
             <Image
               src={project.image}
-              alt={project.title}
+              alt={`${project.title} website`}
               fill
-              className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-110 group-hover:scale-100"
+              sizes="(max-width: 768px) 100vw, 900px"
+              className="object-cover md:grayscale md:group-hover:grayscale-0 transition-all duration-1000 scale-110 group-hover:scale-100"
             />
             <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-700" />
           </div>
 
           <div className="absolute top-4 right-4 md:top-8 md:right-8 rounded-full bg-fuchsia-500 px-4 py-1.5 md:px-6 md:py-2 text-[8px] md:text-[10px] font-black uppercase tracking-[0.2em] text-black">
-            {project.stats}
+            {project.location}
           </div>
         </div>
 

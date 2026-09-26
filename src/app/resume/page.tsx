@@ -26,7 +26,7 @@ export default async function ResumePage({
   );
 
   return (
-    <main className="container-default flex min-h-screen flex-col gap-6 px-4 pb-16 pt-36 text-white">
+    <main className="container-default relative flex min-h-screen flex-col gap-6 pb-16 pt-32 text-white">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div className="flex gap-2">
           {tab("en", "English")}

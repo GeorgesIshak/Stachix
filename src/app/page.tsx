@@ -12,6 +12,20 @@ import ProjectSection from "@/components/ProjectSection";
 import AboutSection from "@/components/AboutSection";
 import { ExperienceTimeline } from "@/components/ExperienceTimeline";
 import TechStack from "@/components/TechStack";
+import { SITE } from "@/data/site";
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: SITE.name,
+  jobTitle: SITE.role,
+  url: SITE.url,
+  email: `mailto:${SITE.email}`,
+  address: { "@type": "PostalAddress", addressLocality: "Stolberg", addressRegion: "NRW", addressCountry: "DE" },
+  alumniOf: { "@type": "CollegeOrUniversity", name: "Antonine University" },
+  knowsAbout: ["React", "Next.js", "TypeScript", "Node.js", "WordPress", "WooCommerce"],
+  sameAs: [SITE.linkedin, SITE.github],
+};
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -69,6 +83,8 @@ export default function Home() {
 
   return (
     <main ref={scrollContainer} className="relative text-white bg-transparent">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }} />
+
       {/* Hero doesn't need reveal-section as it's the first thing seen */}
       <Hero />
 

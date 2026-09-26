@@ -1,4 +1,6 @@
 import React from "react";
+import { readFile } from "node:fs/promises";
+import path from "node:path";
 import {
   Document,
   Page,
@@ -222,9 +224,10 @@ function ResumeDocument({ data, photoSrc }: { data: ResumeData; photoSrc: string
   );
 }
 
-/** Renders the CV to a PDF buffer. `origin` is used to load the profile photo from /public. */
-export function renderResumePdf(lang: ResumeLang, origin: string) {
+/** Renders the CV to a PDF buffer. The photo is read from /public on disk (no network request). */
+export async function renderResumePdf(lang: ResumeLang) {
   const data = RESUME[lang];
-  const photoSrc = new URL(data.profileImage, origin).toString();
+  const photo = await readFile(path.join(process.cwd(), "public", data.profileImage));
+  const photoSrc = `data:image/jpeg;base64,${photo.toString("base64")}`;
   return renderToBuffer(<ResumeDocument data={data} photoSrc={photoSrc} />);
 }
