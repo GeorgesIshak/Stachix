@@ -12,7 +12,7 @@ const EXPERIENCES = [
     date: "Now",
     role: "Software Engineer | Available for Hire",
     company: "Stolberg, Germany",
-    desc: "Relocated to NRW with a valid Chancenkarte. Currently enrolled in an intensive German language course targeting professional fluency (B2/C1). Available for immediate start in Frontend or Full-Stack roles.",
+    desc: "Relocated to NRW with a valid Chancenkarte. Completed German B1 and currently enrolled in a B2 course. Available for immediate start in Frontend or Full-Stack roles.",
   },
   {
     date: "2024 - Present",
@@ -28,9 +28,9 @@ const EXPERIENCES = [
   },
   {
     date: "2018 - 2023",
-    role: "B.Eng. in Software Engineering",
+    role: "Engineering Degree in Computer & Communications Engineering",
     company: "Antonine University",
-    desc: "Specialized in Software Architecture and Networks.",
+    desc: "Diplôme d'Ingénieur (5-year program) in Informatique et Télécommunications, covering software, computer architecture, and networks.",
   },
 ];
 

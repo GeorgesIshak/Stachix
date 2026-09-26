@@ -154,12 +154,24 @@ export default function AboutSection() {
                 Open to Full-Stack roles in Germany & remote.
               </h4>
 
-              <a
-                href="/images/georges-ishak-resume.pdf"
-                className="mt-6 inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/[0.06] px-5 py-3 text-sm font-semibold text-white transition-all hover:bg-pink-500/15"
-              >
-                Download CV <ArrowUpRight className="h-4 w-4" />
-              </a>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <a
+                  href="/cv?lang=en"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/[0.06] px-5 py-3 text-sm font-semibold text-white transition-all hover:bg-pink-500/15"
+                >
+                  Download CV <ArrowUpRight className="h-4 w-4" />
+                </a>
+                <a
+                  href="/cv?lang=de"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 rounded-full border border-white/10 px-5 py-3 text-sm font-semibold text-white/70 transition-all hover:bg-pink-500/15 hover:text-white"
+                >
+                  Lebenslauf (DE) <ArrowUpRight className="h-4 w-4" />
+                </a>
+              </div>
             </div>
           </div>
         </div>
