@@ -3,75 +3,75 @@
 export interface Project {
   title: string;
   category: string;
+  location: string;
   tech: string[];
   description: string;
   image: string;
-  stats: string;
-  link: string; // Added this
+  link: string;
 }
 
 export const PROJECTS: Project[] = [
   {
     title: "Equation Media",
-    category: "Creative Dev",
-    tech: ["Next.js", "Framer Motion", "GSAP"],
-    description: "Media agency website for the MENA region with advanced animations and modern interactions.",
-    image: "/images/equation-media-project.png",
-    stats: "MENA Region",
-    link: "https://www.equation-media.com/"
+    category: "Agency website",
+    location: "MENA",
+    tech: ["Next.js", "GSAP", "Framer Motion"],
+    description: "Media agency website for the MENA region with advanced scroll animations and modern interactions.",
+    image: "/images/projects/equation-media.webp",
+    link: "https://www.equation-media.com/",
   },
   {
     title: "Nou Architecture",
-    category: "Portfolio Dev",
+    category: "Portfolio",
+    location: "Cyprus",
     tech: ["Next.js", "Framer Motion"],
-    description: "Modern architecture portfolio website with clean layouts and smooth transitions.",
-    image: "/images/nou-architecture.png",
-    stats: "Cyprus",
-    link: "https://nou-seven.vercel.app/"
+    description: "Architecture studio portfolio with clean layouts and smooth page transitions.",
+    image: "/images/projects/nou-architecture.webp",
+    link: "https://nou-seven.vercel.app/",
   },
   {
     title: "Luminaire LB",
-    category: "E-Commerce Dev",
-    tech: ["WordPress", "WooCommerce", "Custom Filters"],
-    description: "Custom-built lighting store with advanced product filtering and WooCommerce integration.",
-    image: "/images/luminaire-project.png",
-    stats: "Lebanon",
-    link: "http://luminairelb.com/"
-  },
-  {
-    title: "Korkmaz Charity Foundation",
-    category: "Non-Profit Dev",
-    tech: ["WordPress", "Donations System"],
-    description: "Donation-based charity website with multilingual support and secure payment integration.",
-    image: "/images/korkomaz.png",
-    stats: "Turkey",
-    link: "https://korkmazfoundation.org/"
+    category: "E-commerce",
+    location: "Lebanon",
+    tech: ["WordPress", "WooCommerce", "Custom filters"],
+    description: "Lighting store with advanced AJAX product filtering and a custom WooCommerce setup.",
+    image: "/images/projects/luminaire.webp",
+    link: "https://luminairelb.com/",
   },
   {
     title: "Chiclique Store",
-    category: "E-Commerce Dev",
-    tech: ["WordPress", "WooCommerce", "Payment Integration"],
-    description: "Full WooCommerce fashion store built from scratch with custom checkout and payment flows.",
-    image: "/images/chiclique-store-lebanon.png",
-    stats: "Lebanon",
-    link: "https://chiccliquestore.com/"
+    category: "E-commerce",
+    location: "Lebanon",
+    tech: ["WordPress", "WooCommerce", "Payments"],
+    description: "Fashion store built from scratch with a custom checkout and payment flow.",
+    image: "/images/projects/chiclique-store.webp",
+    link: "https://chiccliquestore.com/",
+  },
+  {
+    title: "Korkmaz Foundation",
+    category: "Non-profit",
+    location: "Turkey",
+    tech: ["WordPress", "Donations", "Multilingual"],
+    description: "Multilingual charity website with a secure online donation system.",
+    image: "/images/projects/korkmaz-foundation.webp",
+    link: "https://korkmazfoundation.org/",
   },
   {
     title: "Maak Events",
-    category: "Corporate Dev",
-    tech: ["WordPress", "Custom Theme"],
-    description: "Event company website with a custom WordPress theme and dynamic content sections.",
-    image: "/images/maak-project.png",
-    stats: "Saudi Arabia",
-    link: "https://maak.co/"
+    category: "Corporate",
+    location: "Saudi Arabia",
+    tech: ["WordPress", "Custom theme"],
+    description: "Event company website with a custom theme and flexible, editable content sections.",
+    image: "/images/projects/maak-events.webp",
+    link: "https://maak.co/",
   },
   {
     title: "Augmental Education",
-    category: "Education Dev",
+    category: "Education",
+    location: "USA",
     tech: ["WordPress"],
-    description: "Educational institution website based in the USA built on WordPress for modern learning management.",
-    image: "/images/lurno-project.png",
-    stats: "USA",
-    link: "https://augmental.education/"
-  }
+    description: "Website for a US education company, built for easy content management by their team.",
+    image: "/images/projects/augmental-education.webp",
+    link: "https://augmental.education/",
+  },
 ];
