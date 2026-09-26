@@ -143,7 +143,7 @@ const en: ResumeData = {
       title: "Diplôme d'Ingénieur in Computer and Communications Engineering",
       place: "Antonine University",
       location: "Beirut, Lebanon",
-      note: "5-year engineering degree (Informatique et Télécommunications)",
+      note: "Specialization: Software Engineering (Génie Logiciel) · 5-year engineering degree",
     },
   ],
 
@@ -261,7 +261,7 @@ const de: ResumeData = {
       title: "Diplôme d'Ingénieur in Informatik und Telekommunikation (Computer and Communications Engineering)",
       place: "Antonine University",
       location: "Beirut, Libanon",
-      note: "5-jähriges Ingenieurstudium",
+      note: "Schwerpunkt: Softwareentwicklung (Génie Logiciel) · 5-jähriges Ingenieurstudium",
     },
   ],
 
