@@ -16,6 +16,9 @@ export default function AboutSection() {
 
   useGSAP(
     () => {
+      // Tilt only makes sense with a mouse; skip on touch devices and for reduced motion
+      if (!window.matchMedia("(hover: hover) and (prefers-reduced-motion: no-preference)").matches) return;
+
       const cards = gsap.utils.toArray<HTMLElement>(".glass-card");
       const cleanups: Array<() => void> = [];
 
@@ -64,12 +67,12 @@ export default function AboutSection() {
   return (
     <section
       ref={containerRef}
-      className="relative rounded-[48px] border border-white/10 bg-white/[0.04] px-6 py-20 backdrop-blur-md md:px-12 md:py-32"
+      className="relative rounded-[48px] border border-white/10 bg-white/[0.04] px-6 py-20 md:px-12 md:py-32"
     >
       {/* BACKGROUND GLOW */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-[48px]">
-        <div className="absolute left-[-10%] top-[-10%] h-[320px] w-[320px] rounded-full bg-fuchsia-500/12 blur-[120px]" />
-        <div className="absolute bottom-[-15%] right-[-10%] h-[340px] w-[340px] rounded-full bg-violet-500/10 blur-[140px]" />
+        <div className="absolute left-[-10%] top-[-10%] -ml-[240px] -mt-[240px] h-[800px] w-[800px] bg-[radial-gradient(closest-side,rgb(217_70_239/0.11),rgb(217_70_239/0.045)_45%,transparent)]" />
+        <div className="absolute bottom-[-15%] right-[-10%] -mb-[280px] -mr-[280px] h-[900px] w-[900px] bg-[radial-gradient(closest-side,rgb(139_92_246/0.09),rgb(139_92_246/0.04)_45%,transparent)]" />
       </div>
 
       <div className="relative z-10 grid gap-16 lg:grid-cols-[1.2fr_0.8fr]">
@@ -107,18 +110,18 @@ export default function AboutSection() {
 
           {/* CARDS */}
           <div className="mt-12 grid gap-4 sm:grid-cols-2">
-            <div className="glass-card group cursor-pointer rounded-3xl border border-white/10 bg-white/[0.04] p-8 transition-all duration-500 hover:border-white/20 hover:bg-white/[0.07]">
-              <div className="mb-6 h-1 w-8 bg-pink-500 transition-all duration-500 group-hover:w-16" />
+            <div className="glass-card group cursor-pointer rounded-3xl border border-white/10 bg-white/[0.04] p-8 transition duration-500 hover:border-white/20 hover:bg-white/[0.07]">
+              <div className="mb-6 h-1 w-8 bg-pink-500 transition-[width] duration-500 group-hover:w-16" />
               <h3 className="text-xl font-bold text-white">Tech Stack</h3>
-              <p className="mt-2 text-sm text-white/40">
+              <p className="mt-2 text-sm text-white/60">
                 React, Next.js, TypeScript, WordPress, WooCommerce, APIs.
               </p>
             </div>
 
-            <div className="glass-card group cursor-pointer rounded-3xl border border-white/10 bg-white/[0.04] p-8 transition-all duration-500 hover:border-white/20 hover:bg-white/[0.07]">
-              <div className="mb-6 h-1 w-8 bg-violet-500 transition-all duration-500 group-hover:w-16" />
+            <div className="glass-card group cursor-pointer rounded-3xl border border-white/10 bg-white/[0.04] p-8 transition duration-500 hover:border-white/20 hover:bg-white/[0.07]">
+              <div className="mb-6 h-1 w-8 bg-violet-500 transition-[width] duration-500 group-hover:w-16" />
               <h3 className="text-xl font-bold text-white">Focus</h3>
-              <p className="mt-2 text-sm text-white/40">
+              <p className="mt-2 text-sm text-white/60">
                 Scalable systems, clean architecture, and performance-driven development.
               </p>
             </div>
@@ -135,7 +138,7 @@ export default function AboutSection() {
               <span className="text-5xl font-black tracking-tighter text-white">
                 {stat.value}
               </span>
-              <span className="mt-1 font-mono text-xs uppercase tracking-widest text-white/30">
+              <span className="mt-1 font-mono text-xs uppercase tracking-widest text-white/55">
                 {stat.label}
               </span>
             </div>
@@ -146,7 +149,7 @@ export default function AboutSection() {
             <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-500/12 via-transparent to-violet-500/10 opacity-80" />
 
             <div className="relative z-10">
-              <p className="text-[10px] font-bold uppercase tracking-widest text-white/45">
+              <p className="text-[10px] font-bold uppercase tracking-widest text-white/60">
                 Available
               </p>
 
@@ -159,7 +162,7 @@ export default function AboutSection() {
                   href="/cv?lang=en"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/[0.06] px-5 py-3 text-sm font-semibold text-white transition-all hover:bg-pink-500/15"
+                  className="inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/[0.06] px-5 py-3 text-sm font-semibold text-white transition hover:bg-pink-500/15"
                 >
                   Download CV <ArrowUpRight className="h-4 w-4" />
                 </a>
@@ -167,7 +170,7 @@ export default function AboutSection() {
                   href="/cv?lang=de"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 rounded-full border border-white/10 px-5 py-3 text-sm font-semibold text-white/70 transition-all hover:bg-pink-500/15 hover:text-white"
+                  className="inline-flex items-center gap-3 rounded-full border border-white/10 px-5 py-3 text-sm font-semibold text-white/70 transition hover:bg-pink-500/15 hover:text-white"
                 >
                   Lebenslauf (DE) <ArrowUpRight className="h-4 w-4" />
                 </a>

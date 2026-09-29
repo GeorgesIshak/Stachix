@@ -33,7 +33,7 @@ export default function SiteHeader() {
   return (
     <header className="fixed top-4 z-[100] w-full px-4 sm:top-6 sm:px-6">
       <div
-        className={`relative z-[110] mx-auto flex max-w-6xl items-center justify-between rounded-full border border-white/10 px-6 py-4 transition-all duration-500 sm:px-10 sm:py-5 ${
+        className={`relative z-[110] mx-auto flex max-w-6xl items-center justify-between rounded-full border border-white/10 px-6 py-4 transition duration-500 sm:px-10 sm:py-5 ${
           scrolled && !isOpen ? "bg-[#0F0F1F]/70 shadow-[0_10px_40px_rgba(0,0,0,0.35)] backdrop-blur-xl" : ""
         }`}
       >
@@ -58,7 +58,7 @@ export default function SiteHeader() {
               className="relative text-[11px] font-mono uppercase tracking-[0.35em] text-white/60 hover:text-white transition-colors group"
             >
               {item.label}
-              <span className="absolute -bottom-1 left-0 h-[1px] w-0 bg-pink-500 transition-all duration-300 group-hover:w-full" />
+              <span className="absolute -bottom-1 left-0 h-[1px] w-0 bg-pink-500 transition-[width] duration-300 group-hover:w-full" />
             </a>
           ))}
         </nav>
@@ -71,12 +71,12 @@ export default function SiteHeader() {
           aria-expanded={isOpen}
         >
           <span
-            className={`absolute left-0 top-1/2 h-0.5 w-6 bg-white transition-all duration-300 ${
+            className={`absolute left-0 top-1/2 h-0.5 w-6 bg-white transition duration-300 ${
               isOpen ? "rotate-45" : "-translate-y-2"
             }`}
           />
           <span
-            className={`absolute left-0 top-1/2 h-0.5 w-6 bg-white transition-all duration-300 ${
+            className={`absolute left-0 top-1/2 h-0.5 w-6 bg-white transition duration-300 ${
               isOpen ? "-rotate-45" : "translate-y-2"
             }`}
           />
@@ -88,7 +88,7 @@ export default function SiteHeader() {
             href="/cv?lang=en"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full bg-pink-600 px-5 py-2.5 text-[10px] font-bold uppercase tracking-[0.3em] text-white transition-all hover:bg-pink-500 hover:scale-105"
+            className="rounded-full bg-pink-600 px-5 py-2.5 text-[10px] font-bold uppercase tracking-[0.3em] text-white transition hover:bg-pink-500 hover:scale-105"
           >
             Resume
           </a>

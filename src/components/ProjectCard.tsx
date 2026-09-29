@@ -14,7 +14,7 @@ interface ProjectProps {
 
 export default function ProjectCard({ project }: ProjectProps) {
   return (
-    <article className="project-card group relative">
+    <article className="group relative">
       <Link 
         href={project.link} 
         target="_blank" 
@@ -29,7 +29,7 @@ export default function ProjectCard({ project }: ProjectProps) {
               alt={`${project.title} website`}
               fill
               sizes="(max-width: 768px) 100vw, 900px"
-              className="object-cover md:grayscale md:group-hover:grayscale-0 transition-all duration-1000 scale-110 group-hover:scale-100"
+              className="object-cover md:grayscale md:group-hover:grayscale-0 transition duration-1000 scale-110 group-hover:scale-100"
             />
             <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-700" />
           </div>
@@ -44,7 +44,7 @@ export default function ProjectCard({ project }: ProjectProps) {
           <div className="space-y-3 md:space-y-4">
             <div className="flex flex-wrap gap-2">
               {project.tech.map((t) => (
-                <span key={t} className="text-[8px] md:text-[10px] font-mono text-white/40 uppercase border border-white/10 px-2 py-1 rounded whitespace-nowrap">
+                <span key={t} className="text-[8px] md:text-[10px] font-mono text-white/60 uppercase border border-white/10 px-2 py-1 rounded whitespace-nowrap">
                   {t}
                 </span>
               ))}
@@ -61,7 +61,7 @@ export default function ProjectCard({ project }: ProjectProps) {
           </div>
           
           {/* Action Button: Scaled down for mobile */}
-          <div className="flex h-14 w-14 md:h-20 md:w-20 shrink-0 items-center justify-center rounded-full border border-white/20 transition-all duration-500 group-hover:bg-white group-hover:text-black group-hover:scale-110">
+          <div className="flex h-14 w-14 md:h-20 md:w-20 shrink-0 items-center justify-center rounded-full border border-white/20 transition duration-500 group-hover:bg-white group-hover:text-black group-hover:scale-110">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-6 h-6 md:w-8 md:h-8 -rotate-45 group-hover:rotate-0 transition-transform duration-500">
               <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
             </svg>

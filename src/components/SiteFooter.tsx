@@ -17,7 +17,7 @@ export default function SiteFooter() {
           <div className="group max-w-full lg:max-w-[50%]">
             <h2 className="text-[clamp(40px,10vw,100px)] font-black uppercase tracking-[-0.05em] leading-[0.8] mb-8 select-none">
               GEORGES<br />
-              <span className="stroke-text fill-on-hover italic opacity-40 group-hover:opacity-100 transition-all duration-700 group-hover:text-pink-500">
+              <span className="stroke-text fill-on-hover italic opacity-40 group-hover:opacity-100 transition duration-700 group-hover:text-pink-500">
                 ISHAK.
               </span>
             </h2>
@@ -36,19 +36,19 @@ export default function SiteFooter() {
           {/* CONTACT */}
           <div className="flex flex-col gap-10 w-full lg:w-auto lg:items-end">
             <div className="space-y-3 lg:text-right">
-              <span className="block font-mono text-[10px] uppercase tracking-[0.2em] text-pink-500/80">
+              <span className="block font-mono text-[10px] uppercase tracking-[0.2em] text-pink-400">
                 Ready to collaborate?
               </span>
 
               <a
                 href="mailto:georgesishak112@gmail.com"
-                className="group flex items-center gap-4 text-4xl md:text-6xl font-bold tracking-tighter hover:text-pink-500 transition-all duration-500"
+                className="group flex items-center gap-4 text-4xl md:text-6xl font-bold tracking-tighter hover:text-pink-500 transition duration-500"
               >
                 Let&apos;s Talk
-                <ArrowUpRight className="h-8 w-8 md:h-12 md:w-12 opacity-30 group-hover:opacity-100 group-hover:translate-x-2 group-hover:-translate-y-2 transition-all duration-500" />
+                <ArrowUpRight className="h-8 w-8 md:h-12 md:w-12 opacity-30 group-hover:opacity-100 group-hover:translate-x-2 group-hover:-translate-y-2 transition duration-500" />
               </a>
 
-              <p className="text-white/40 text-sm font-mono">
+              <p className="text-white/60 text-sm font-mono">
                 Currently in NRW • Available for Full-Stack roles
               </p>
             </div>
@@ -72,7 +72,7 @@ export default function SiteFooter() {
                   href={social.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 px-6 py-3 rounded-full border border-white/10 bg-white/5 backdrop-blur-md transition-all hover:bg-white hover:text-black group/btn"
+                  className="flex items-center gap-3 px-6 py-3 rounded-full border border-white/10 bg-white/5 transition hover:bg-white hover:text-black group/btn"
                 >
                   <span className="opacity-60 group-hover/btn:opacity-100 transition-opacity">
                     {social.icon}

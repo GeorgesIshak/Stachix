@@ -100,7 +100,7 @@ export function ExperienceTimeline() {
             }`}
           >
             <div className="experience-card group">
-              <div className="p-8 rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur-xl hover:bg-white/[0.06] transition-all">
+              <div className="p-8 rounded-3xl border border-white/10 bg-white/[0.03] hover:bg-white/[0.06] transition">
                 <span className="text-[10px] font-mono uppercase tracking-widest text-fuchsia-400">
                   {exp.date}
                 </span>
@@ -109,7 +109,7 @@ export function ExperienceTimeline() {
                   {exp.role}
                 </h3>
 
-                <p className="text-white/40 text-sm mt-1 uppercase tracking-wider">
+                <p className="text-white/60 text-sm mt-1 uppercase tracking-wider">
                   {exp.company}
                 </p>
 

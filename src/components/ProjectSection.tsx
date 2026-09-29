@@ -30,22 +30,24 @@ export default function ProjectSection() {
       },
     });
 
-    // 2. Parallax and Entrance for Cards
-    const cards = gsap.utils.toArray<HTMLElement>(".project-card");
-    cards.forEach((card) => {
-      const innerImg = card.querySelector(".project-img-inner");
-      if (innerImg) {
-        gsap.to(innerImg, {
-          yPercent: 15,
-          ease: "none",
-          scrollTrigger: {
-            trigger: card,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true,
-          },
-        });
-      }
+    // 2. Image parallax for cards (desktop only — no benefit on phones, just CPU)
+    const mm = gsap.matchMedia();
+    mm.add("(min-width: 768px) and (prefers-reduced-motion: no-preference)", () => {
+      gsap.utils.toArray<HTMLElement>(".project-card").forEach((card) => {
+        const innerImg = card.querySelector(".project-img-inner");
+        if (innerImg) {
+          gsap.to(innerImg, {
+            yPercent: 15,
+            ease: "none",
+            scrollTrigger: {
+              trigger: card,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: true,
+            },
+          });
+        }
+      });
     });
 
     // CRITICAL: Refresh GSAP whenever the list length changes
@@ -87,7 +89,7 @@ export default function ProjectSection() {
         <div className="mt-48 flex justify-center">
           <button 
             onClick={() => setShowAll(true)}
-            className="group relative px-12 py-6 overflow-hidden rounded-full border border-white/20 transition-all hover:border-fuchsia-500"
+            className="group relative px-12 py-6 overflow-hidden rounded-full border border-white/20 transition hover:border-fuchsia-500"
           >
             <span className="relative z-10 font-mono text-xs uppercase tracking-widest text-white group-hover:text-black transition-colors duration-300">
               Discover More Works ({PROJECTS.length - 3})

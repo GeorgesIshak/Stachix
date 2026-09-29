@@ -14,22 +14,18 @@ export default function HeroBanner() {
   const container = useRef<HTMLDivElement | null>(null);
 
   useGSAP(() => {
-    const sections = gsap.utils.toArray<HTMLElement>(".panel");
-
-    // All panels centered, transparent background
-    gsap.set(sections, { position: "absolute", inset: 0, autoAlpha: 0 });
-    gsap.set(".panel-1", { autoAlpha: 1, yPercent: 0, zIndex: 3 });
-    gsap.set(".panel-2", { yPercent: 15, zIndex: 2 });
-    gsap.set(".panel-3", { yPercent: 15, zIndex: 1 });
+    // Panels are stacked by CSS (absolute + opacity) so panel 1 paints before JS runs
+    gsap.set([".panel-2", ".panel-3"], { yPercent: 15 });
 
     const tl = gsap.timeline({
       scrollTrigger: {
+        // The section is 300vh tall with a sticky inner screen (CSS does the pinning),
+        // so the panels change over 200vh of scroll — same feel as before, but no
+        // DOM re-wrapping after load and smoother scrolling on phones.
         trigger: container.current,
         start: "top top",
-        end: "+=200%", // Faster scroll for LinkedIn users
+        end: "bottom bottom",
         scrub: 0.8,
-        pin: true,
-        anticipatePin: 1,
       },
     });
 
@@ -43,10 +39,11 @@ export default function HeroBanner() {
   }, { scope: container });
 
   return (
-    <section ref={container} className="relative h-screen w-full overflow-hidden text-white bg-transparent">
+    <section ref={container} className="relative h-[300vh] w-full text-white bg-transparent">
+      <div className="sticky top-0 h-screen w-full overflow-hidden">
       
       {/* PANEL 1: IDENTITY */}
-      <section className="panel panel-1 flex items-center justify-center text-center">
+      <section className="panel panel-1 absolute inset-0 z-[3] flex items-center justify-center text-center">
         <div className="px-6">
           <p className="mb-4 font-mono text-[10px] uppercase tracking-[0.8em] text-pink-500">
             Georges Ishak
@@ -54,14 +51,14 @@ export default function HeroBanner() {
           <h1 className="text-[14vw] font-black uppercase leading-[0.8] tracking-tighter md:text-[10vw]">
             Developer<span className="text-pink-500">.</span>
           </h1>
-          <p className="mx-auto mt-8 max-w-sm text-sm tracking-wide text-white/40">
+          <p className="mx-auto mt-8 max-w-sm text-sm tracking-wide text-white/60">
             Building performance-first <br/> web experiences.
           </p>
         </div>
       </section>
 
       {/* PANEL 2: CAPABILITIES */}
-      <section className="panel panel-2 flex items-center justify-center text-center">
+      <section className="panel panel-2 invisible absolute inset-0 z-[2] flex items-center justify-center text-center opacity-0">
         <div className="px-6">
           <div className="mb-10 font-mono text-[9px] uppercase tracking-[0.5em] text-pink-500/60">
             Next.js • TypeScript • WordPress
@@ -79,7 +76,7 @@ export default function HeroBanner() {
       </section>
 
       {/* PANEL 3: CASE STUDIES */}
-      <section className="panel panel-3 flex items-center justify-center text-center">
+      <section className="panel panel-3 invisible absolute inset-0 z-[1] flex items-center justify-center text-center opacity-0">
         <div className="px-6">
           <p className="mb-8 font-mono text-[10px] uppercase tracking-[0.5em] text-pink-400/80">
             Selection of work
@@ -91,13 +88,14 @@ export default function HeroBanner() {
           <div className="mt-14 flex justify-center">
             <Link
               href="/#work"
-              className="group relative rounded-full bg-pink-600 px-12 py-5 text-[11px] font-bold uppercase tracking-[0.3em] transition-all hover:bg-pink-500 hover:scale-105 active:scale-95"
+              className="group relative rounded-full bg-pink-600 px-12 py-5 text-[11px] font-bold uppercase tracking-[0.3em] transition hover:bg-pink-500 hover:scale-105 active:scale-95"
             >
               Explore Portfolio
             </Link>
           </div>
         </div>
       </section>
+      </div>
     </section>
   );
 }

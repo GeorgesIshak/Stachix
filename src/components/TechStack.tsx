@@ -25,12 +25,12 @@ const SKILLS = [
 
 export default function TechStack() {
   return (
-    <section className="relative overflow-hidden rounded-[40px] border border-white/10 bg-white/[0.03] px-6 py-20 backdrop-blur-xl md:px-10 md:py-28">
+    <section className="relative overflow-hidden rounded-[40px] border border-white/10 bg-white/[0.03] px-6 py-20 md:px-10 md:py-28">
 
       {/* ambient background */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute left-[-10%] top-[-10%] h-[320px] w-[320px] rounded-full bg-fuchsia-500/10 blur-[120px]" />
-        <div className="absolute bottom-[-20%] right-[-10%] h-[340px] w-[340px] rounded-full bg-violet-500/10 blur-[140px]" />
+        <div className="absolute left-[-10%] top-[-10%] -ml-[240px] -mt-[240px] h-[800px] w-[800px] bg-[radial-gradient(closest-side,rgb(217_70_239/0.11),rgb(217_70_239/0.045)_45%,transparent)]" />
+        <div className="absolute bottom-[-20%] right-[-10%] -mb-[280px] -mr-[280px] h-[900px] w-[900px] bg-[radial-gradient(closest-side,rgb(139_92_246/0.09),rgb(139_92_246/0.04)_45%,transparent)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.06),transparent_35%)]" />
       </div>
 
@@ -59,7 +59,7 @@ export default function TechStack() {
           {SKILLS.map((group) => (
             <article
               key={group.category}
-              className="group relative overflow-hidden rounded-[30px] border border-white/10 bg-white/[0.04] p-7 backdrop-blur-md transition-all duration-500 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.06]"
+              className="group relative overflow-hidden rounded-[30px] border border-white/10 bg-white/[0.04] p-7 transition duration-500 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.06]"
             >
               <div
                 className={`absolute inset-0 bg-gradient-to-br ${group.glow} to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100`}
@@ -67,7 +67,7 @@ export default function TechStack() {
               <div className="absolute inset-[1px] rounded-[29px] border border-white/5" />
 
               <div className="relative z-10">
-                <p className="font-mono text-[11px] uppercase tracking-[0.35em] text-white/35">
+                <p className="font-mono text-[11px] uppercase tracking-[0.35em] text-white/60">
                   {group.category}
                 </p>
 
@@ -77,7 +77,7 @@ export default function TechStack() {
                       key={item}
                       className="flex items-center gap-3 text-lg font-semibold tracking-tight text-white md:text-xl"
                     >
-                      <span className="h-2 w-2 rounded-full bg-white/20 transition-all duration-300 group-hover:bg-fuchsia-400 group-hover:scale-125" />
+                      <span className="h-2 w-2 rounded-full bg-white/20 transition duration-300 group-hover:bg-fuchsia-400 group-hover:scale-125" />
                       <span className="text-white/90">{item}</span>
                     </li>
                   ))}

@@ -92,55 +92,56 @@ export default function ServicesListBlend() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    const cards = gsap.utils.toArray<HTMLElement>(".service-card");
+    const mm = gsap.matchMedia();
 
-    cards.forEach((card) => {
-      const innerElements = card.querySelectorAll(".reveal-item");
-      const imgWrapper = card.querySelector(".parallax-img");
+    mm.add(
+      {
+        desktop: "(min-width: 768px) and (prefers-reduced-motion: no-preference)",
+        mobile: "(max-width: 767px) and (prefers-reduced-motion: no-preference)",
+      },
+      (ctx) => {
+        const { desktop } = ctx.conditions as { desktop: boolean };
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: card,
-          start: "top 90%",
-          toggleActions: "play none none reverse",
-        },
-      });
+        gsap.utils.toArray<HTMLElement>(".service-card").forEach((card) => {
+          const innerElements = card.querySelectorAll(".reveal-item");
+          const imgWrapper = card.querySelector(".parallax-img");
 
-      tl.fromTo(
-        card,
-        { clipPath: "inset(20% 10% 20% 10% round 40px)", autoAlpha: 0, y: 40 },
-        {
-          clipPath: "inset(0% 0% 0% 0% round 24px)",
-          autoAlpha: 1,
-          y: 0,
-          duration: 1.2,
-          ease: "power4.out",
-        }
-      ).from(
-        innerElements,
-        {
-          y: 20,
-          autoAlpha: 0,
-          stagger: 0.08,
-          duration: 0.8,
-          ease: "power2.out",
-        },
-        "-=0.8"
-      );
+          // Scale + fade instead of animating clip-path (clip-path repaints every frame)
+          gsap
+            .timeline({
+              scrollTrigger: {
+                trigger: card,
+                start: "top 90%",
+                toggleActions: "play none none reverse",
+              },
+            })
+            .fromTo(
+              card,
+              { autoAlpha: 0, y: 40, scale: 0.94 },
+              { autoAlpha: 1, y: 0, scale: 1, duration: 1.2, ease: "power4.out" }
+            )
+            .from(
+              innerElements,
+              { y: 20, autoAlpha: 0, stagger: 0.08, duration: 0.8, ease: "power2.out" },
+              "-=0.8"
+            );
 
-      if (imgWrapper) {
-        gsap.to(imgWrapper, {
-          yPercent: 15,
-          ease: "none",
-          scrollTrigger: {
-            trigger: card,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true,
-          },
+          // Image parallax (desktop only)
+          if (desktop && imgWrapper) {
+            gsap.to(imgWrapper, {
+              yPercent: 15,
+              ease: "none",
+              scrollTrigger: {
+                trigger: card,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true,
+              },
+            });
+          }
         });
       }
-    });
+    );
   }, { scope: containerRef });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -195,7 +196,7 @@ export default function ServicesListBlend() {
               >
                 {/* IMAGE */}
                 <div className="md:col-span-3 reveal-item">
-                  <div className="relative h-44 md:h-52 w-full rounded-2xl overflow-hidden ring-1 ring-white/10 shadow-2xl grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:ring-white/30">
+                  <div className="relative h-44 md:h-52 w-full rounded-2xl overflow-hidden ring-1 ring-white/10 shadow-2xl grayscale transition duration-700 group-hover:grayscale-0 group-hover:ring-white/30">
                     <div className="parallax-img relative h-[120%] w-full -top-[10%]">
                       <Image
                         src={it.img}
@@ -222,7 +223,7 @@ export default function ServicesListBlend() {
                     {it.features.map((f, idx) => (
                       <li
                         key={idx}
-                        className="text-[10px] md:text-[11px] font-mono uppercase tracking-widest text-white/40 border border-white/5 px-3 py-1 rounded-full bg-white/5 group-hover:text-fuchsia-300 group-hover:border-fuchsia-500/20 transition-all duration-500"
+                        className="text-[10px] md:text-[11px] font-mono uppercase tracking-widest text-white/60 border border-white/5 px-3 py-1 rounded-full bg-white/5 group-hover:text-fuchsia-300 group-hover:border-fuchsia-500/20 transition duration-500"
                       >
                         {f}
                       </li>
@@ -232,11 +233,11 @@ export default function ServicesListBlend() {
 
                 {/* TAG */}
                 <div className="md:col-span-3 flex items-center justify-between md:justify-end gap-8 reveal-item">
-                  <span className="text-white/30 font-mono text-xs uppercase tracking-widest group-hover:text-white/70 transition-colors">
+                  <span className="text-white/55 font-mono text-xs uppercase tracking-widest group-hover:text-white/70 transition-colors">
                     {it.tag}
                   </span>
 
-                  <div className="relative flex h-14 w-14 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/50 overflow-hidden transition-all duration-500 group-hover:scale-110 group-hover:bg-white group-hover:text-black group-hover:border-white">
+                  <div className="relative flex h-14 w-14 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/50 overflow-hidden transition duration-500 group-hover:scale-110 group-hover:bg-white group-hover:text-black group-hover:border-white">
                     <svg
                       viewBox="0 0 24 24"
                       className="h-6 w-6 transform -rotate-45 group-hover:rotate-0 transition-transform duration-500"

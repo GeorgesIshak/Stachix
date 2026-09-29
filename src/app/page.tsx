@@ -36,47 +36,55 @@ export default function Home() {
 
   useGSAP(
     () => {
-      // 1. Reveal Animation for standard sections
-      const sections = gsap.utils.toArray<HTMLElement>(".reveal-section");
+      const mm = gsap.matchMedia();
 
-      sections.forEach((section) => {
-        const inner = section.querySelector(".reveal-inner");
-        if (!inner) return;
+      mm.add(
+        {
+          desktop: "(min-width: 768px) and (prefers-reduced-motion: no-preference)",
+          mobile: "(max-width: 767px) and (prefers-reduced-motion: no-preference)",
+        },
+        (ctx) => {
+          const { desktop } = ctx.conditions as { desktop: boolean };
 
-        gsap.fromTo(
-          inner,
-          {
-            y: 100,      
-            scale: 0.9,  
-            rotateX: 15, 
-            autoAlpha: 0,
-          },
-          {
-            y: 0,
-            scale: 1,
-            rotateX: 0,
-            autoAlpha: 1,
-            duration: 1.4, 
-            ease: "expo.out", 
-            scrollTrigger: {
-              trigger: section,
-              start: "top 90%",
-              end: "top 20%",
-              scrub: 1, 
-            },
+          // 1. Reveal animation for standard sections
+          // (3D tilt on desktop only — rotating huge sections is costly on phones)
+          gsap.utils.toArray<HTMLElement>(".reveal-section").forEach((section) => {
+            const inner = section.querySelector(".reveal-inner");
+            if (!inner) return;
+
+            gsap.fromTo(
+              inner,
+              { y: desktop ? 100 : 60, scale: desktop ? 0.9 : 0.96, rotateX: desktop ? 15 : 0, autoAlpha: 0 },
+              {
+                y: 0,
+                scale: 1,
+                rotateX: 0,
+                autoAlpha: 1,
+                duration: 1.4,
+                ease: "expo.out",
+                scrollTrigger: {
+                  trigger: section,
+                  start: "top 90%",
+                  end: desktop ? "top 20%" : "top 60%",
+                  scrub: 1,
+                },
+              }
+            );
+          });
+
+          // 2. Parallax effect to make sections feel layered (desktop only)
+          if (desktop) {
+            gsap.to(".reveal-section", {
+              yPercent: -10,
+              ease: "none",
+              scrollTrigger: {
+                trigger: scrollContainer.current,
+                scrub: true,
+              },
+            });
           }
-        );
-      });
-
-      // 2. Parallax effect to make sections feel layered
-      gsap.to(".reveal-section", {
-        yPercent: -10,
-        ease: "none",
-        scrollTrigger: {
-          trigger: scrollContainer.current,
-          scrub: true,
         }
-      });
+      );
     },
     { scope: scrollContainer }
   );
