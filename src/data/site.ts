@@ -6,7 +6,7 @@ export const SITE = {
   url: "https://stachix.vercel.app",
   email: "georgesishak112@gmail.com",
   location: "Stolberg (NRW), Germany",
-  linkedin: "https://linkedin.com/in/george-ishak-879b7b239",
+  linkedin: "https://linkedin.com/in/georges-ishak-879b7b239",
   github: "https://github.com/GeorgesIshak",
   cv: { en: "/cv?lang=en", de: "/cv?lang=de" },
 };

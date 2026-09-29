@@ -59,7 +59,7 @@ export default function SiteFooter() {
                 {
                   name: "LinkedIn",
                   icon: <Linkedin size={18} />,
-                  link: "https://linkedin.com/in/george-ishak-879b7b239",
+                  link: "https://linkedin.com/in/georges-ishak-879b7b239",
                 },
                 {
                   name: "GitHub",

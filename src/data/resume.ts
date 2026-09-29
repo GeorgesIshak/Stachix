@@ -45,7 +45,7 @@ const shared = {
   email: "georgesishak112@gmail.com",
   phone: "+49 1525 2873320",
   website: "stachix.vercel.app",
-  linkedin: "linkedin.com/in/george-ishak-879b7b239",
+  linkedin: "linkedin.com/in/georges-ishak-879b7b239",
   github: "github.com/GeorgesIshak",
 };
 
