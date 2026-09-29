@@ -12,7 +12,7 @@ const EXPERIENCES = [
     date: "Now",
     role: "Software Engineer | Available for Hire",
     company: "Stolberg, Germany",
-    desc: "Relocated to NRW with a valid Chancenkarte. Completed German B1 and currently enrolled in a B2 course. Available for immediate start in Frontend or Full-Stack roles.",
+    desc: "Relocated to NRW with a valid Chancenkarte. Completed German B1, finishing an intensive B2 course in December 2026. Available for immediate start in Frontend or Full-Stack roles.",
   },
   {
     date: "2024 - Present",

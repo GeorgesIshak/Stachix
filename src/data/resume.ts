@@ -154,7 +154,7 @@ const en: ResumeData = {
     { title: "Engineering (Academic)", items: "Cisco networking, OpenCV, machine learning, CNN model evaluation, Python" },
   ],
 
-  languages: ["Arabic (native)", "English (C1)", "French (B1)", "German (B1, currently in B2 course)"],
+  languages: ["Arabic (native)", "English (C1)", "French (B1)", "German (B1, intensive B2 course until 12/2026)"],
 
   labels: {
     profile: "Professional Profile",
@@ -272,7 +272,7 @@ const de: ResumeData = {
     { title: "Ingenieurwesen (Studium)", items: "Cisco Networking, OpenCV, Machine Learning, CNN-Modellbewertung, Python" },
   ],
 
-  languages: ["Arabisch (Muttersprache)", "Englisch (C1)", "Französisch (B1)", "Deutsch (B1, B2-Kurs laufend)"],
+  languages: ["Arabisch (Muttersprache)", "Englisch (C1)", "Französisch (B1)", "Deutsch (B1, B2-Intensivkurs bis 12/2026)"],
 
   labels: {
     profile: "Berufliches Profil",
