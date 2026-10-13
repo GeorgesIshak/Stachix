@@ -3,7 +3,7 @@
 export const SITE = {
   name: "Georges Ishak",
   role: "Full-Stack Developer",
-  url: "https://stachix.vercel.app",
+  url: "https://www.georgesishak.com",
   email: "georgesishak112@gmail.com",
   location: "Stolberg (NRW), Germany",
   linkedin: "https://linkedin.com/in/georges-ishak-879b7b239",
