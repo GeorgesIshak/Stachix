@@ -72,6 +72,21 @@ const en: ResumeData = {
 
   workHistory: [
     {
+      date: "09/2025 – 05/2026",
+      title: "Full-Stack Developer (Contract)",
+      company: "AJN Healthcare Services",
+      location: "Remote (Australia)",
+      subtitle: "Built two production systems for a healthcare recruitment company and its sister company.",
+      stack: "Tech stack: Laravel, PHP, MySQL, Next.js, React, TypeScript, Node.js, GraphQL, MongoDB, Docker, Nginx, AWS, DigitalOcean",
+      bullets: [
+        "Built a reference-check system in Laravel 13 / MySQL with 3 portals (admin, candidate, referee), fraud checks and automated PDF reports.",
+        "Automated 7 types of transactional email through Microsoft 365; covered the system with 118 PHPUnit tests.",
+        "Developed a multi-tenant SaaS platform (Next.js, Node.js, GraphQL, MongoDB) that sends scheduled and queued email, WhatsApp and SMS campaigns.",
+        "Implemented JWT authentication, role-based admin and tenant areas, and subscription billing with Stripe and PayPal.",
+        "Containerized the apps with Docker and deployed them behind Nginx on AWS and DigitalOcean, with SSL and SPF/DKIM/DMARC email setup.",
+      ],
+    },
+    {
       date: "02/2024 – Present",
       title: "Full-Stack Developer",
       company: "Freelance",
@@ -189,6 +204,21 @@ const de: ResumeData = {
   ],
 
   workHistory: [
+    {
+      date: "09/2025 – 05/2026",
+      title: "Full-Stack-Entwickler (Vertragsbasis)",
+      company: "AJN Healthcare Services",
+      location: "Remote (Australien)",
+      subtitle: "Entwicklung von zwei Produktivsystemen für ein Recruiting-Unternehmen im Gesundheitswesen und dessen Schwesterfirma.",
+      stack: "Technologien: Laravel, PHP, MySQL, Next.js, React, TypeScript, Node.js, GraphQL, MongoDB, Docker, Nginx, AWS, DigitalOcean",
+      bullets: [
+        "Entwicklung eines Systems zur Referenzprüfung (Laravel 13 / MySQL) mit 3 Portalen, Betrugsprüfung und automatischen PDF-Berichten.",
+        "Automatisierung von 7 E-Mail-Typen über Microsoft 365; Absicherung durch 118 PHPUnit-Tests.",
+        "Entwicklung einer mandantenfähigen SaaS-Plattform (Next.js, Node.js, GraphQL, MongoDB) für geplante E-Mail-, WhatsApp- und SMS-Kampagnen.",
+        "Umsetzung von JWT-Authentifizierung, rollenbasierten Bereichen und Abo-Zahlungen mit Stripe und PayPal.",
+        "Containerisierung mit Docker und Deployment hinter Nginx auf AWS und DigitalOcean, inkl. SSL und SPF/DKIM/DMARC.",
+      ],
+    },
     {
       date: "02/2024 – heute",
       title: "Full-Stack Softwareentwickler",
