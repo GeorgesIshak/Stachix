@@ -172,7 +172,7 @@ function ResumeDocument({ data, photoSrc }: { data: ResumeData; photoSrc: string
         ))}
 
         {/* PROJECTS */}
-        <SectionTitle title={data.labels.projects} />
+        {data.projects.length > 0 && <SectionTitle title={data.labels.projects} />}
         {data.projects.map((p) => (
           <View key={p.title} style={styles.projectCard} wrap={false}>
             <Text>
@@ -186,7 +186,7 @@ function ResumeDocument({ data, photoSrc }: { data: ResumeData; photoSrc: string
         ))}
 
         {/* INTERNSHIPS */}
-        <SectionTitle title={data.labels.internships} />
+        {data.internships.length > 0 && <SectionTitle title={data.labels.internships} />}
         {data.internships.map((job, i) => (
           <Entry key={i} entry={job} />
         ))}

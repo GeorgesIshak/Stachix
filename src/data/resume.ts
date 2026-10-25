@@ -96,7 +96,6 @@ const en: ResumeData = {
       bullets: [
         "Built 5+ production web applications with Next.js (App Router), using Server Components and optimized API routes.",
         "Developed interactive, high-fidelity user interfaces with GSAP and Framer Motion for premium landing pages and SaaS platforms.",
-        "Contributed to scalable platform development, including a multi-tenant marketplace and an enterprise messaging platform.",
         "Integrated REST/GraphQL APIs and managed global application state with React Query and Zustand.",
         "Set up Git-based CI/CD deployments on Vercel with a focus on performance and Core Web Vitals.",
       ],
@@ -118,39 +117,9 @@ const en: ResumeData = {
     },
   ],
 
-  projects: [
-    {
-      title: "Equation Media",
-      subtitle: "Next.js • GSAP • Framer Motion",
-      link: "https://www.equation-media.com/",
-      description: "Media agency website for the MENA region with advanced animations and modern interactions.",
-    },
-    {
-      title: "Nou Architecture",
-      subtitle: "Next.js • Framer Motion",
-      link: "https://nou-seven.vercel.app/",
-      description: "Architecture portfolio with clean layouts and smooth page transitions.",
-    },
-    {
-      title: "Chiclique Store",
-      subtitle: "WordPress • WooCommerce • Payment integration",
-      link: "https://chiccliquestore.com/",
-      description: "Fashion e-commerce store built from scratch with custom checkout and payment flows.",
-    },
-  ],
+  projects: [],
 
-  internships: [
-    {
-      date: "07/2021 – 10/2021",
-      title: "Intern",
-      company: "OGERO",
-      location: "Lebanon",
-      stack: "LTE, IMS, FTTH/FTTC, fiber optics",
-      bullets: [
-        "Telecom internship: testing of digital switching systems, LTE/IMS troubleshooting, and FTTH/FTTC field work.",
-      ],
-    },
-  ],
+  internships: [],
 
   education: [
     {
@@ -164,8 +133,8 @@ const en: ResumeData = {
 
   technicalSkills: [
     { title: "Frontend", items: "JavaScript (ES6+), TypeScript, React, Next.js, HTML5, CSS3, Tailwind CSS, GSAP, Framer Motion, state management" },
-    { title: "Backend & Database", items: "Node.js, PHP (Laravel), Next.js API Routes, Prisma ORM, MySQL, PostgreSQL" },
-    { title: "DevOps & Tools", items: "Git/GitHub, Vercel, Docker, CI/CD, REST APIs, technical SEO" },
+    { title: "Backend & Database", items: "Node.js, PHP (Laravel), GraphQL, REST APIs, Prisma ORM, MySQL, PostgreSQL, MongoDB" },
+    { title: "DevOps & Tools", items: "Docker, Nginx, AWS, DigitalOcean, Git/GitHub, CI/CD, Vercel, PHPUnit, technical SEO" },
     { title: "Engineering (Academic)", items: "Cisco networking, OpenCV, machine learning, CNN model evaluation, Python" },
   ],
 
@@ -229,7 +198,6 @@ const de: ResumeData = {
       bullets: [
         "Entwicklung von über fünf produktiven Webanwendungen mit Next.js (App Router), Server Components und optimierten API-Routen.",
         "Konzeption und Entwicklung moderner Benutzeroberflächen mit GSAP und Framer Motion für hochwertige Landingpages und SaaS-Plattformen.",
-        "Mitwirkung an skalierbaren Plattformen, darunter ein Multi-Tenant-Marktplatz sowie eine Enterprise-Messaging-Plattform.",
         "Integration von REST- und GraphQL-APIs sowie Verwaltung globaler Anwendungszustände mit React Query und Zustand.",
         "Aufbau Git-basierter CI/CD-Deployments auf Vercel mit Fokus auf Performance und Core Web Vitals.",
       ],
@@ -251,39 +219,9 @@ const de: ResumeData = {
     },
   ],
 
-  projects: [
-    {
-      title: "Equation Media",
-      subtitle: "Next.js • GSAP • Framer Motion",
-      link: "https://www.equation-media.com/",
-      description: "Website einer Medienagentur für die MENA-Region mit aufwendigen Animationen und modernen Interaktionen.",
-    },
-    {
-      title: "Nou Architecture",
-      subtitle: "Next.js • Framer Motion",
-      link: "https://nou-seven.vercel.app/",
-      description: "Architektur-Portfolio mit klaren Layouts und flüssigen Seitenübergängen.",
-    },
-    {
-      title: "Chiclique Store",
-      subtitle: "WordPress • WooCommerce • Zahlungsintegration",
-      link: "https://chiccliquestore.com/",
-      description: "Mode-Onlineshop mit individuellem Checkout und Zahlungsabwicklung, von Grund auf entwickelt.",
-    },
-  ],
+  projects: [],
 
-  internships: [
-    {
-      date: "07/2021 – 10/2021",
-      title: "Praktikant",
-      company: "OGERO",
-      location: "Libanon",
-      stack: "LTE, IMS, FTTH/FTTC, Glasfasertechnik",
-      bullets: [
-        "Telekommunikationspraktikum: Prüfung digitaler Vermittlungssysteme, Fehleranalyse in LTE-/IMS-Netzen sowie FTTH/FTTC-Außeneinsätze.",
-      ],
-    },
-  ],
+  internships: [],
 
   education: [
     {
@@ -297,8 +235,8 @@ const de: ResumeData = {
 
   technicalSkills: [
     { title: "Frontend", items: "JavaScript (ES6+), TypeScript, React, Next.js, HTML5, CSS3, Tailwind CSS, GSAP, Framer Motion, State Management" },
-    { title: "Backend & Datenbanken", items: "Node.js, PHP (Laravel), Next.js API Routes, Prisma ORM, MySQL, PostgreSQL" },
-    { title: "DevOps & Tools", items: "Git/GitHub, Vercel, Docker, CI/CD, REST APIs, technisches SEO" },
+    { title: "Backend & Datenbanken", items: "Node.js, PHP (Laravel), GraphQL, REST APIs, Prisma ORM, MySQL, PostgreSQL, MongoDB" },
+    { title: "DevOps & Tools", items: "Docker, Nginx, AWS, DigitalOcean, Git/GitHub, CI/CD, Vercel, PHPUnit, technisches SEO" },
     { title: "Ingenieurwesen (Studium)", items: "Cisco Networking, OpenCV, Machine Learning, CNN-Modellbewertung, Python" },
   ],
 
