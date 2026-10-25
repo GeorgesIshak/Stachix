@@ -28,9 +28,9 @@ const EXPERIENCES = [
   },
   {
     date: "2018 - 2023",
-    role: "Engineering Degree in Computer & Communications Engineering",
+    role: "Bachelor in Computer & Communications Engineering",
     company: "Antonine University",
-    desc: "Diplôme d'Ingénieur (5-year program), concentration in Software Engineering and Networks.",
+    desc: "Concentration in Software Engineering and Networks.",
   },
 ];
 

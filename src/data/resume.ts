@@ -124,10 +124,10 @@ const en: ResumeData = {
   education: [
     {
       date: "2018 – 2023",
-      title: "Diplôme d'Ingénieur in Computer and Communications Engineering",
+      title: "Bachelor in Computer and Communications Engineering",
       place: "Antonine University",
       location: "Beirut, Lebanon",
-      note: "Concentration: Software Engineering and Networks · 5-year engineering degree",
+      note: "Concentration: Software Engineering and Networks",
     },
   ],
 
@@ -226,10 +226,10 @@ const de: ResumeData = {
   education: [
     {
       date: "2018 – 2023",
-      title: "Diplôme d'Ingénieur in Informatik und Telekommunikation (Computer and Communications Engineering)",
+      title: "Bachelor in Computer and Communications Engineering",
       place: "Antonine University",
       location: "Beirut, Libanon",
-      note: "Schwerpunkt: Softwareentwicklung und Netzwerke · 5-jähriges Ingenieurstudium",
+      note: "Schwerpunkt: Softwareentwicklung und Netzwerke",
     },
   ],
 
