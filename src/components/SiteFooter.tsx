@@ -92,22 +92,6 @@ export default function SiteFooter() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 border-t border-white/20 pt-8 text-[11px] font-bold text-white/60">
 
           <div className="flex gap-8">
-            <a
-              href="/cv?lang=en"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-pink-500 transition-colors uppercase tracking-[0.2em]"
-            >
-              Resume (EN)
-            </a>
-            <a
-              href="/cv?lang=de"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-pink-500 transition-colors uppercase tracking-[0.2em]"
-            >
-              Lebenslauf (DE)
-            </a>
           </div>
 
           <div className="text-center md:text-right opacity-60 font-mono text-[10px] uppercase tracking-[0.2em] text-white">

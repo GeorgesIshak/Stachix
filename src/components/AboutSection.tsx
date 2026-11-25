@@ -3,7 +3,6 @@
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { ArrowUpRight } from "lucide-react";
 
 const STATS = [
   { value: "80+", label: "WordPress Websites Delivered" },
@@ -156,25 +155,6 @@ export default function AboutSection() {
               <h4 className="mt-3 text-2xl font-bold leading-tight text-white">
                 Open to Full-Stack roles in Germany & remote.
               </h4>
-
-              <div className="mt-6 flex flex-wrap gap-3">
-                <a
-                  href="/cv?lang=en"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/[0.06] px-5 py-3 text-sm font-semibold text-white transition hover:bg-pink-500/15"
-                >
-                  Download CV <ArrowUpRight className="h-4 w-4" />
-                </a>
-                <a
-                  href="/cv?lang=de"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 rounded-full border border-white/10 px-5 py-3 text-sm font-semibold text-white/70 transition hover:bg-pink-500/15 hover:text-white"
-                >
-                  Lebenslauf (DE) <ArrowUpRight className="h-4 w-4" />
-                </a>
-              </div>
             </div>
           </div>
         </div>

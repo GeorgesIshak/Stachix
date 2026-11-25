@@ -81,18 +81,6 @@ export default function SiteHeader() {
             }`}
           />
         </button>
-
-        {/* Desktop Connect */}
-        <div className="hidden md:block">
-          <a
-            href="/cv?lang=en"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-full bg-pink-600 px-5 py-2.5 text-[10px] font-bold uppercase tracking-[0.3em] text-white transition hover:bg-pink-500 hover:scale-105"
-          >
-            Resume
-          </a>
-        </div>
       </div>
 
       {/* Mobile Overlay */}
@@ -114,15 +102,6 @@ export default function SiteHeader() {
           ))}
 
           <div className="h-px w-12 bg-white/20 my-4" />
-
-          <a
-            href="/cv?lang=en"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-full bg-pink-600 px-8 py-4 text-[12px] font-bold uppercase tracking-[0.3em] text-white"
-          >
-            Download Resume
-          </a>
 
           <a
             href="mailto:georgesishak112@gmail.com"
